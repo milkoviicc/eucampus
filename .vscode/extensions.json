@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint", // ESLint integration
+    "esbenp.prettier-vscode", // Prettier for formatting
+    "EditorConfig.EditorConfig", // Respect .editorconfig rules
+    "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense
+    "dsznajder.es7-react-js-snippets", // React/Next.js snippets
+    "formulahendry.auto-rename-tag", // Auto rename paired JSX tags
+    "formulahendry.auto-close-tag", // Auto close JSX tags
+    "yoavbls.pretty-ts-errors" // Prettier TypeScript error messages
+  ]
+}

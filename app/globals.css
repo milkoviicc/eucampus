@@ -2,25 +2,91 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --primary-color: #224058;
+  --accent-color: #224058;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --accent-color: #00A694;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary-color);
+  --color-accent: var(--accent-color);
+  --font-montserrat: var(--font-montserrat);
+  --font-poppins: var(--font-poppins);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--primary-color);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Hide highlight animation - makes SVG disappear */
+@keyframes hide-highlight {
+  0% {
+    stroke-dasharray: 1500px, 1500px;
+    filter: blur(0px);
+    opacity: 1;
+  }
+  100% {
+    stroke-dasharray: 1500px, 1500px;
+    filter: blur(10px);
+    opacity: 0;
+  }
+}
+
+/* Show highlight animation - makes SVG appear with drawing effect */
+@keyframes show-highlight {
+  0% {
+    stroke-dasharray: 0 1500;
+    opacity: 0;
+  }
+  100% {
+    stroke-dasharray: 1500 1500;
+    opacity: 1;
+  }
+}
+
+/* Continuous loop animation */
+@keyframes svg-loop {
+  /* Show phase: 0% - 20% (1.3s) */
+  0% {
+    stroke-dasharray: 0 1500;
+    opacity: 0;
+  }
+  20% {
+    stroke-dasharray: 1500 1500;
+    opacity: 1;
+  }
+  
+  /* Wait phase: 20% - 85% (4.225s) - stays visible */
+  85% {
+    stroke-dasharray: 1500 1500;
+    opacity: 1;
+  }
+  
+  /* Hide phase: 85% - 100% (0.975s) - faster hide */
+  92% {
+    stroke-dasharray: 1500 1500;
+    opacity: 0.5;
+  }
+  100% {
+    stroke-dasharray: 1500 1500;
+    opacity: 0;
+  }
+}
+
+/* Initial state - hidden */
+.svg-animated path {
+  stroke-dasharray: 0 1500;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* When animation is triggered - infinite loop */
+.svg-animated.animate path {
+  animation: svg-loop 6.5s infinite;
+  animation-delay: 0s;
 }
