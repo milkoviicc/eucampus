@@ -173,8 +173,8 @@ const LandingWrapper = () => {
 
   return (
     <>
-      <div className="max-w-[1300px] mx-auto flex justify-between items-center py-20">
-        <div className="font-montserrat w-1/2">
+      <div className="max-w-[1300px] mx-auto flex justify-between items-center">
+        <div className="font-montserrat w-1/2 py-35">
           <h3 className="text-xl font-light w-fit">
             La #1 en preparación EPSO en español, sin rodeos
           </h3>
