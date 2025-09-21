@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
-import StackingCards from '../components/StackingCards'
 import Stack from '../components/Stack'
 
 const Faqs = () => {
@@ -84,9 +83,9 @@ const Faqs = () => {
   ]
 
   return (
-    <div>
+    <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="max-w-[1300px] mx-auto flex flex-col -20">
+      <div className="max-w-[1300px] mx-auto flex flex-col py-20">
         <div className="flex gap-2 w-full justify-center text-5xl leading-[1.2] font-semibold">
           <div className="relative">
             <h2 className="text-accent">Consejos prácticos</h2>
@@ -107,34 +106,6 @@ const Faqs = () => {
           <h2>para los candidatos</h2>
         </div>
         <Stack />
-        <div className="flex flex-col gap-4 mt-20">
-          {tips.map((tip, idx) => (
-            <div
-              key={idx}
-              className="bg-[#22405817] py-[20px] px-[10px] border-[#d5d8dc] border-1 cursor-pointer"
-              onClick={() => toggleTips(idx)}
-            >
-              <p
-                className={`flex gap-2 font-semibold items-center ${openIndex === idx ? 'text-accent' : 'text-primary'}`}
-              >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-[12px] transition-transform duration-300"
-                  style={{
-                    transform: openIndex === idx ? 'rotate(45deg)' : 'rotate(0deg)',
-                  }}
-                >
-                  <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
-                </svg>
-                {tip.shortDesc}
-              </p>
-
-              {openIndex === idx && <p className="mt-4 text-sm text-[#7A7A7A]">{tip.longDesc}</p>}
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   )

@@ -75,7 +75,7 @@ const Cursos = () => {
     },
   ]
   return (
-    <div>
+    <div className="mt-[60px]">
       <Breadcrumb />
       <div className="max-w-[1300px] mx-auto flex flex-col gap-4 py-20">
         <div className="flex gap-4 uppercase text-primary">

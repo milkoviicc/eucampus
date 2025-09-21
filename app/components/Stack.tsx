@@ -1,13 +1,8 @@
 import { Plus } from 'lucide-react'
-import React, { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import React, { useRef, useEffect, useState } from 'react'
 
 const Stack = () => {
-  const [currentActiveCard, setCurrentActiveCard] = useState(0)
-
+  const navbarOffset = 130 // height of navbar
   const tips = [
     {
       shortDesc: 'Elige bien tus lenguas de trabajo',
@@ -41,137 +36,87 @@ const Stack = () => {
     },
   ]
 
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const itemRefs = useRef<HTMLDivElement[]>([])
+  const tipRefs = useRef<HTMLDivElement[]>([])
+  const [expanded, setExpanded] = useState<boolean[]>(tips.map((_, i) => i === 0)) // first card open
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isScrolling, setIsScrolling] = useState(false)
 
+  // Expand/collapse based on activeIndex
   useEffect(() => {
-    if (!sectionRef.current || !wrapperRef.current) return
+    setExpanded(tips.map((_, i) => i === activeIndex))
+  }, [activeIndex])
 
-    const section = sectionRef.current
-    const itemElements = itemRefs.current.filter(Boolean)
+  // Index-based smooth scroll
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      if (isScrolling) return
 
-    // Initial states
-    itemElements.forEach((item, index) => {
-      if (index !== 0) {
-        gsap.set(item, { yPercent: 100 })
-      }
-    })
+      let nextIndex = activeIndex
 
-    // Create timeline
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        pin: true,
-        start: 'top top',
-        end: () => `+=${itemElements.length * 100}%`,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          // Calculate which card should be active based on progress
-          const progress = self.progress
-          const activeIndex = Math.min(
-            Math.floor(progress * itemElements.length),
-            itemElements.length - 1,
-          )
-          setCurrentActiveCard(activeIndex)
-        },
-        // markers: true, // Uncomment for debugging
-      },
-      defaults: { ease: 'none' },
-    })
-
-    // Animate items
-    itemElements.forEach((item, index) => {
-      timeline.to(item, {
-        scale: 0.9,
-        borderRadius: '10px',
-      })
-
-      // Animate tip-description to open when card comes into view
-      const description = item.querySelector('.tip-description')
-      if (description) {
-        timeline.fromTo(
-          description,
-          {
-            maxHeight: 0,
-          },
-          {
-            maxHeight: '500px',
-            duration: 0.6,
-          },
-          '<',
-        )
+      if (e.deltaY > 0 && activeIndex < tips.length - 1) {
+        // scroll down
+        nextIndex = activeIndex + 1
+      } else if (e.deltaY < 0) {
+        // scroll up
+        if (activeIndex > 0) {
+          nextIndex = activeIndex - 1
+        } else {
+          // first card scroll up → go to top of page
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+          return
+        }
       }
 
-      // Animate the purple line
-      const beforeElement = item.querySelector('.tip-card')
-      if (beforeElement) {
-        timeline.fromTo(
-          beforeElement,
-          {
-            '--line-scale': 0,
-          },
-          {
-            '--line-scale': 1,
-            duration: 0.5,
-          },
-          '<',
-        )
+      if (nextIndex !== activeIndex) {
+        setActiveIndex(nextIndex)
+        const target = tipRefs.current[nextIndex]
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - navbarOffset,
+            behavior: 'smooth',
+          })
+        }
+        setIsScrolling(true)
+        setTimeout(() => setIsScrolling(false), 500)
       }
-
-      if (itemElements[index + 1]) {
-        timeline.to(
-          itemElements[index + 1],
-          {
-            yPercent: 0,
-          },
-          '<',
-        )
-      }
-    })
-
-    // Cleanup
-    return () => {
-      timeline.kill()
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
     }
-  }, [])
+
+    window.addEventListener('wheel', handleWheel, { passive: false })
+    return () => window.removeEventListener('wheel', handleWheel)
+  }, [activeIndex, isScrolling])
 
   return (
-    <div className="w-full">
-      <div className="scroll-section vertical-section section pt-20 w-full" ref={sectionRef}>
-        <div className="wrapper" ref={wrapperRef}>
-          <div className="list">
-            {tips.map((tip, idx) => (
-              <div
-                key={idx}
-                className="item bg-white"
-                ref={(el) => {
-                  if (el) itemRefs.current[idx] = el
-                }}
+    <div className="flex flex-col gap-[20px] mt-20 px-6">
+      {tips.map((tip, idx) => (
+        <div
+          key={idx}
+          ref={(el) => {
+            if (el) tipRefs.current[idx] = el
+          }}
+          className="bg-white rounded-2xl shadow-xl overflow-hidden relative"
+        >
+          <div className="tip-card relative p-6">
+            <div className="flex items-center gap-4">
+              <Plus className="w-5 h-5 text-primary" />
+              <h2
+                className={`text-2xl font-bold transition-colors duration-300 ${
+                  expanded[idx] ? 'text-accent' : 'text-primary'
+                }`}
               >
-                <div
-                  className={`tip-card w-[90vw] max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden relative
-                    ${currentActiveCard === idx ? 'active' : ''}
-                    ${currentActiveCard > idx ? 'stacked' : ''}
-                  `}
-                  id={`tip-card-${idx}`}
-                >
-                  <div className="flex items-center gap-4 mb-5 relative z-10 cursor-pointer p-10">
-                    <Plus className="plus-icon w-5 h-5 text-primary" />
-                    <h2 className="text-2xl font-bold">{tip.shortDesc}</h2>
-                  </div>
+                {tip.shortDesc}
+              </h2>
+            </div>
 
-                  <div className="tip-description px-10 pb-10">
-                    <p className="text-[#7A7A7A] leading-relaxed">{tip.longDesc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <div
+              className={`tip-description mt-4 text-[#7A7A7A] leading-relaxed transition-all duration-500 overflow-hidden`}
+              style={{ maxHeight: expanded[idx] ? '500px' : '0px' }}
+            >
+              {tip.longDesc}
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   )
 }
