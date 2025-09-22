@@ -1,11 +1,6 @@
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Plus } from 'lucide-react'
-import React, { useRef, useEffect, useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 
 const Stack = () => {
-  const navbarOffset = 125 // height of navbar
-
   const tips = useMemo(
     () => [
       {
@@ -47,79 +42,38 @@ const Stack = () => {
     [],
   )
 
-  const tipRefs = useRef<HTMLDivElement[]>([])
-  const [expanded, setExpanded] = useState<boolean[]>(tips.map((_, i) => i === 0)) // first card open
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [isScrolling, setIsScrolling] = useState(false)
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
 
-  // Expand/collapse based on activeIndex
-  useEffect(() => {
-    setExpanded(tips.map((_, i) => i === activeIndex))
-  }, [activeIndex, tips])
-
-  // Index-based smooth scroll
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault()
-      if (isScrolling) return
-
-      let nextIndex = activeIndex
-
-      if (e.deltaY > 0 && activeIndex < tips.length - 1) {
-        // scroll down
-        nextIndex = activeIndex + 1
-      } else if (e.deltaY < 0) {
-        // scroll up
-        if (activeIndex > 0) {
-          nextIndex = activeIndex - 1
-        } else {
-          // first card scroll up → go to top of page
-          window.scrollTo({ top: 0, behavior: 'smooth' })
-          return
-        }
-      }
-
-      if (nextIndex !== activeIndex) {
-        setActiveIndex(nextIndex)
-        const target = tipRefs.current[nextIndex]
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - navbarOffset,
-            behavior: 'smooth',
-          })
-        }
-        setIsScrolling(true)
-        setTimeout(() => setIsScrolling(false), 500)
-      }
-    }
-
-    window.addEventListener('wheel', handleWheel, { passive: false })
-    return () => window.removeEventListener('wheel', handleWheel)
-  }, [activeIndex, isScrolling, tips.length])
+  const toggleTip = (idx: number) => {
+    setOpenIndex(openIndex === idx ? null : idx)
+  }
 
   return (
     <div className="flex flex-col gap-[20px] mt-20 px-6">
       {tips.map((tip, idx) => (
         <div
           key={idx}
-          ref={(el) => {
-            if (el) tipRefs.current[idx] = el
-          }}
-          className="bg-white rounded-2xl shadow-xl overflow-hidden relative"
+          className="bg-white rounded-2xl shadow-xl overflow-hidden relative cursor-pointer"
+          onClick={() => toggleTip(idx)}
         >
           <div className="tip-card relative p-6">
             <div className="flex items-center gap-4">
-              <FontAwesomeIcon
-                icon={faPlus}
-                className={`text-2xl text-primary  ${expanded[idx] ? '!hidden' : 'block'}`}
-              />
-              <FontAwesomeIcon
-                icon={faMinus}
-                className={`text-2xl text-accent hidden ${expanded[idx] ? 'block' : '!hidden'}`}
-              />
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+                fill={openIndex === idx ? '#00a694' : '#224058'}
+                className="w-[12px] transition-transform duration-300"
+                style={{
+                  transform: openIndex === idx ? 'rotate(45deg)' : 'rotate(0deg)',
+                }}
+              >
+                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+              </svg>
+
               <h2
                 className={`text-2xl font-bold transition-colors duration-300 ${
-                  expanded[idx] ? 'text-accent' : 'text-primary'
+                  openIndex === idx ? 'text-accent' : 'text-primary'
                 }`}
               >
                 {tip.shortDesc}
@@ -127,10 +81,11 @@ const Stack = () => {
             </div>
 
             <div
-              className={`tip-description mt-4 text-[#7A7A7A] leading-relaxed transition-all duration-500 overflow-hidden`}
-              style={{ maxHeight: expanded[idx] ? '500px' : '0px' }}
+              className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                openIndex === idx ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'
+              }`}
             >
-              {tip.longDesc}
+              <div className="pb-2">{tip.longDesc}</div>
             </div>
           </div>
         </div>
