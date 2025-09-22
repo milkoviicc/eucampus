@@ -218,7 +218,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a href="#" className="uppercase">
+              <a href="/contacto" className="uppercase">
                 Contacto
               </a>
             </li>
