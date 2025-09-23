@@ -40,7 +40,7 @@ const Navbar = () => {
                 <div className="flex flex-col px-4 w-[250px]">
                   <ul className="uppercase text-accent text-xl">
                     <li className="py-1 cursor-pointer hover:bg-gray-100 transition-colors">
-                      <a href="#">
+                      <a href="/cursos-generalistas-ad5">
                         <FontAwesomeIcon icon={faArrowRight} color="#000" /> Generalistas
                       </a>
                     </li>
@@ -110,10 +110,13 @@ const Navbar = () => {
 
             {/* Trabajar en la UE Dropdown */}
             <li className="relative group">
-              <p className="flex items-center gap-2 uppercase cursor-pointer">
+              <a
+                href="/trabajar-en-la-ue"
+                className="flex items-center gap-2 uppercase cursor-pointer"
+              >
                 Trabajar en la UE
                 <FontAwesomeIcon icon={faCaretDown} size="sm" className="w-[11]" />
-              </p>
+              </a>
               <div className="absolute pt-[10px] pb-[20px] px-5 top-full -left-16 flex gap-3 bg-white shadow-lg border border-gray-200 w-max opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="py-2">
                   <a

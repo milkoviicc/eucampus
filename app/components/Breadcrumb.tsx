@@ -17,6 +17,7 @@ const Breadcrumb = () => {
       style={{
         backgroundImage:
           'url(https://marianos98.sg-host.com/wp-content/uploads/2025/05/bg-title-int.jpg)',
+        backgroundSize: 'cover',
       }}
     >
       <div className="max-w-[1300px] h-full mx-auto flex flex-col justify-center gap-2 text-[rgba(255,255,255,0.8)]">
@@ -25,7 +26,13 @@ const Breadcrumb = () => {
           <p>/</p>
           <p>{splitPath}</p>
         </div>
-        <h3 className="capitalize text-4xl font-semibold text-white">{splitPath}</h3>
+        <h3 className="capitalize text-4xl font-semibold text-white">
+          {splitPath.endsWith('ue')
+            ? splitPath.slice(0, -2) + 'UE'
+            : splitPath.endsWith('ad5')
+              ? splitPath.slice(0, -3) + 'AD5'
+              : splitPath}
+        </h3>
       </div>
     </div>
   )

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { sendMail } from '../lib/actions/sendMail'
 
 const Contacto = () => {
   const [name, setName] = useState('')
@@ -51,9 +52,6 @@ const Contacto = () => {
     setPhone(formatted)
   }
 
-  const sendMail = () => {
-    // send mail to info@eucampus.com with backend (Node.js with nodemailer for example)
-  }
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
