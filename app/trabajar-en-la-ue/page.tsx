@@ -1,62 +1,16 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
 import Image from 'next/image'
+import AnimatedHeading from '../components/AnimatedHeading'
 
 const Trabajar = () => {
-  const svgRef1 = useRef<SVGSVGElement>(null)
-  const svgRef2 = useRef<SVGSVGElement>(null)
-  const svgRef3 = useRef<SVGSVGElement>(null)
-  const svgRef4 = useRef<SVGSVGElement>(null)
   const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const [employmentTab, setEmploymentTab] = useState(0)
 
   const toggleStep = (idx: number) => {
     setOpenIndex(openIndex === idx ? null : idx)
   }
-
-  useEffect(() => {
-    // Function to set up observer for a single SVG
-    const setupObserver = (node: SVGSVGElement) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate')
-            } else {
-              entry.target.classList.remove('animate')
-            }
-          })
-        },
-        { threshold: 0.3 },
-      )
-
-      observer.observe(node)
-      return observer
-    }
-
-    // Set up observers for both SVGs
-    const observers: IntersectionObserver[] = []
-
-    if (svgRef1.current) {
-      observers.push(setupObserver(svgRef1.current))
-    }
-    if (svgRef2.current) {
-      observers.push(setupObserver(svgRef2.current))
-    }
-
-    if (svgRef3.current) {
-      observers.push(setupObserver(svgRef3.current))
-    }
-
-    if (svgRef4.current) {
-      observers.push(setupObserver(svgRef4.current))
-    }
-
-    // Cleanup function
-    return () => {
-      observers.forEach((observer) => observer.disconnect())
-    }
-  }, [])
 
   const selectionProcess = [
     {
@@ -133,14 +87,14 @@ const Trabajar = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="max-w-[1300px] mx-auto pt-20 pb-10">
-        <div className="pb-8 flex flex-wrap gap-2 w-full justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-semibold text-center">
-          <h2>¿Por qué trabajar en la</h2>
-          <div className="relative inline-block">
-            <h2 className="text-accent">Unión Europea?</h2>
+      <div className="max-w-[1300px] mx-auto pt-20">
+        <AnimatedHeading
+          firstText="¿Por qué trabajar en la"
+          secondText="Unión Europea?"
+          underlineOn="second"
+          svg={
             <svg
-              ref={svgRef1}
-              className="absolute left-0 -bottom-5 w-full h-auto svg-animated"
+              className="absolute left-0 -bottom-5 w-full h-auto"
               stroke="#00A694"
               strokeWidth={5}
               fill="none"
@@ -151,8 +105,8 @@ const Trabajar = () => {
             >
               <path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path>
             </svg>
-          </div>
-        </div>
+          }
+        />
 
         <div className="py-10 flex justify-between gap-12">
           <div className="flex flex-col gap-5 text-[#7A7A7A] text-justify text-sm w-1/2">
@@ -209,13 +163,14 @@ const Trabajar = () => {
             className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-1/2 max-h-[670px]"
           />
         </div>
-        <div className="flex flex-col gap-20 py-15">
-          <div className="flex flex-wrap gap-2 w-full justify-center text-2xl sm:text-3xl md:text-4xl lg:text-[43px] leading-tight font-semibold text-center">
-            <div className="relative inline-block">
-              <h2 className="text-accent">Requisitos generales</h2>
+        <div className="flex flex-col items-center py-15">
+          <AnimatedHeading
+            firstText="Tipos de empleo"
+            secondText="en la Unión Europea"
+            underlineOn="first"
+            svg={
               <svg
-                ref={svgRef2}
-                className="absolute left-0 -bottom-6 w-full h-auto svg-animated"
+                className="absolute left-0 -bottom-6 w-full h-auto"
                 stroke="#00A694"
                 strokeWidth={5}
                 fill="none"
@@ -226,9 +181,242 @@ const Trabajar = () => {
               >
                 <path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path>
               </svg>
+            }
+          />
+
+          <p className="text-[#7A7A7A] text-center text-sm w-[75%] mt-2">
+            Las instituciones de la UE ofrecen distintas formas de trabajar en función del tipo de
+            contrato, la duración y las tareas a desempeñar. A continuación te explicamos las
+            principales categorías:
+          </p>
+          <div className="flex flex-col items-center w-full gap-10 mt-10">
+            <div className="grid grid-cols-3 gap-2 w-fit">
+              {/* Top row */}
+              <button
+                className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 0 ? 'bg-accent' : 'bg-primary'}`}
+                onClick={() => setEmploymentTab(0)}
+              >
+                Funcionarios permanentes
+              </button>
+              <button
+                className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 1 ? 'bg-accent' : 'bg-primary'}`}
+                onClick={() => setEmploymentTab(1)}
+              >
+                Agentes contractuales (CAST)
+              </button>
+              <button
+                className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 2 ? 'bg-accent' : 'bg-primary'}`}
+                onClick={() => setEmploymentTab(2)}
+              >
+                Agentes temporales
+              </button>
+
+              {/* Bottom row centered */}
+              <div className="col-span-3 flex justify-center gap-2">
+                <button
+                  className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 3 ? 'bg-accent' : 'bg-primary'}`}
+                  onClick={() => setEmploymentTab(3)}
+                >
+                  Expertos nacionales en comisión de servicios (SNEs)
+                </button>
+                <button
+                  className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 4 ? 'bg-accent' : 'bg-primary'}`}
+                  onClick={() => setEmploymentTab(4)}
+                >
+                  Prácticas o traineeships
+                </button>
+              </div>
             </div>
-            <h2>para trabajar en la Unión Europea</h2>
+            <div className="w-full">
+              {employmentTab === 0 ? (
+                <div className="flex flex-col gap-3 text-[#7A7A7A]">
+                  <p>
+                    Los funcionarios permanentes son empleados de carrera de la UE con contratos
+                    indefinidos. Se accede a estos puestos mediante oposiciones organizadas por
+                    EPSO. Las categorías son:​
+                  </p>
+                  <p>
+                    <strong>Administradores (AD):</strong> responsables de la formulación de
+                    políticas, análisis, gestión de programas y tareas similares. Los grados van
+                    desde AD 5 (nivel de entrada para graduados universitarios) hasta AD 16 (puestos
+                    de alta dirección).
+                  </p>
+                  <p>
+                    <strong>Asistentes (AST):</strong> realizan funciones técnicas y administrativas
+                    de apoyo. Los grados van desde AST 1 hasta AST 11. El ingreso suele ser en AST 1
+                    o AST 3, dependiendo de la experiencia y formación del candidato.
+                  </p>
+                  <p>
+                    <strong>Secretarios/Oficinistas (AST/SC):</strong> proporcionan apoyo
+                    administrativo y de oficina, como gestión de documentos, organización de
+                    reuniones y mantenimiento de bases de datos. Los grados van desde AST/SC 1 hasta
+                    AST/SC 6. La entrada habitual es en AST/SC 1 o AST/SC 2.
+                  </p>
+                  <table className="border-1 border-collapse mt-5">
+                    <thead>
+                      <tr className="text-left">
+                        <th>Categoria</th>
+                        <th>Funciones principales</th>
+                        <th>Grados de entrada</th>
+                        <th>Requisitos tipicos</th>
+                        <th>Evolución profesional</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="font-semibold px-2">Administradores (AD)</td>
+                        <td>
+                          Políticas, gestión de programas, análisis, legislación, relaciones
+                          exteriores
+                        </td>
+                        <td>AD 5</td>
+                        <td>Titulo universitario</td>
+                        <td>Hasta AD 16 (dirección)</td>
+                      </tr>
+                      <tr>
+                        <td className="font-semibold px-2">Asistentes (AST)</td>
+                        <td>
+                          Apoyo técnico y administrativo, preparación de documentos, gestión interna
+                        </td>
+                        <td>AST 1 o AST 3</td>
+                        <td>Titulo de secundaria + experiencia o formación técnica</td>
+                        <td>Hasta AST 11</td>
+                      </tr>
+                      <tr>
+                        <td className="font-semibold px-2">Secretarios/Oficinistas (AST/SC)</td>
+                        <td>
+                          Tareas administrativas de oficina, archivo, gestión de agendas, apoyo
+                          logístico
+                        </td>
+                        <td>AST/SC 1 o AST/SC 2</td>
+                        <td>Título de secundaria + experiencia administrativa</td>
+                        <td>Hasta AST/SC 6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              ) : employmentTab === 1 ? (
+                <div className="flex flex-col gap-2 text-sm text-[#7A7A7A]">
+                  <p>
+                    Trabajan bajo contrato por tiempo determinado, pero pueden encadenar varios
+                    contratos o incluso acceder a contratos indefinidos. Este tipo de personal
+                    <br />
+                    desempeña tareas similares a las de los funcionarios, dependiendo del grado
+                    (grupo de funciones).
+                  </p>
+                  <p>
+                    Se accede a través de una base de datos gestionada por EPSO (CAST Permanente).
+                  </p>
+                  <p>
+                    No es necesario aprobar una oposición tradicional, pero sí superar pruebas y ser
+                    seleccionado por una institución.
+                  </p>
+                  <p>Muy habitual en agencias descentralizadas o delegaciones.</p>
+                </div>
+              ) : employmentTab === 2 ? (
+                <div className="flex flex-col gap-2 text-sm text-[#7A7A7A]">
+                  <p>
+                    Ocupaciones más especializadas o de duración concreta. Son contratados
+                    directamente por las instituciones para necesidades específicas (por ejemplo:
+                    <br />
+                    expertos en clima, abogados lingüistas, técnicos en datos).
+                  </p>
+                  <p>Contratos normalmente de 2 a 6 años, con posibilidad de prórroga.</p>
+                  <p>Suelen requerir experiencia previa o cualificaciones específicas.</p>
+                </div>
+              ) : employmentTab === 3 ? (
+                <div className="flex flex-col gap-2 text-sm text-[#7A7A7A]">
+                  <p>
+                    Funcionarios de los Estados miembros que son enviados temporalmente a trabajar
+                    en una institución europea, manteniendo su vínculo con la administración
+                    nacional.
+                  </p>
+                  <p>Requieren una sólida experiencia previa.</p>
+                  <p>Se consideran “embajadores técnicos” de su país en las instituciones.</p>
+                  <p>Muy valorado como experiencia profesional de alto nivel.</p>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-3 text-[#7A7A7A]">
+                  <p>
+                    Destinadas a personas recién graduadas o en etapas iniciales de su carrera
+                    profesional. Ofrecen una primera experiencia laboral en el entorno de la UE.
+                  </p>
+                  <p>
+                    Programas de prácticas remuneradas (como el Blue Book de la Comisión Europea).
+                  </p>
+                  <p>Duración habitual: 5 a 6 meses.</p>
+                  <p>Se valoran idiomas, motivación y formación universitaria.</p>
+                  <table className="border-1 border-collapse mt-5">
+                    <thead>
+                      <tr className="text-left">
+                        <th>Tipo de empleo</th>
+                        <th>Acceso</th>
+                        <th>Duración del contrato</th>
+                        <th>Estabilidad</th>
+                        <th>Remuneración</th>
+                        <th>¿Requiere pruebas EPSO?</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="font-semibold px-2">Funcionario permanente</td>
+                        <td>Oposición EPSO (convocatoria formal y pruebas)</td>
+                        <td>Indefinido (tras periodo de prueba)</td>
+                        <td>Alta</td>
+                        <td>Alta (según escalas AD/AST)</td>
+                        <td>Sí</td>
+                      </tr>
+                      <tr>
+                        <td className="font-semibold px-2">Agente contractual (CAST)</td>
+                        <td>Inscripción en base de datos + selección por la institución</td>
+                        <td>Variable (renovable, a veces indefinido)</td>
+                        <td>Media</td>
+                        <td>Buena (según grado y funciones)</td>
+                        <td>No (salvo pruebas internas del CAST)</td>
+                      </tr>
+                      <tr>
+                        <td className="font-semibold px-2">Agente temporal</td>
+                        <td>Selección directa por la institución o agencia</td>
+                        <td>Normalmente de 2 a 6 años</td>
+                        <td>Media o baja</td>
+                        <td>Buena (en perfiles técnicos o especializados)</td>
+                        <td>No</td>
+                      </tr>
+                      <tr>
+                        <td className="font-semibold px-2">Prácticas (Traineeships)</td>
+                        <td>Solicitud directa en el programa correspondiente</td>
+                        <td>5 a 6 meses (ocasionalmente ampliable)</td>
+                        <td>Temporal, formativa</td>
+                        <td>Remuneración fija mensual (varía según institución)</td>
+                        <td>No (se valoran criterios académicos y motivación)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
+        </div>
+        <div className="flex flex-col gap-10 py-15">
+          <AnimatedHeading
+            firstText={<span className="text-accent leading-[2]">Requisitos generales</span>}
+            secondText="para trabajar en la Unión Europea"
+            underlineOn="first"
+            svg={
+              <svg
+                className="absolute left-0 -bottom-3 w-full h-auto svg-animated"
+                stroke="#00A694"
+                strokeWidth={5}
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 150"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path>
+              </svg>
+            }
+          />
 
           <div className="flex justify-between gap-10">
             <div className="flex flex-col gap-2 text-[#7A7A7A] text-justify text-sm w-1/2">
@@ -285,13 +473,13 @@ const Trabajar = () => {
             />
           </div>
           <div className="py-20 flex flex-col gap-2 justify-center items-center">
-            <div className="pb-8 flex flex-wrap gap-2 w-full justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-semibold text-center">
-              <h2>Cómo es el</h2>
-              <div className="relative inline-block">
-                <h2 className="text-accent">proceso de selección</h2>
+            <AnimatedHeading
+              firstText="Cómo es el"
+              secondText="proceso de selección"
+              underlineOn="second"
+              svg={
                 <svg
-                  ref={svgRef3}
-                  className="absolute left-0 -bottom-6 w-full h-auto svg-animated"
+                  className="absolute left-0 -bottom-6 w-full h-auto"
                   stroke="#00A694"
                   strokeWidth={5}
                   fill="none"
@@ -302,8 +490,8 @@ const Trabajar = () => {
                 >
                   <path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path>
                 </svg>
-              </div>
-            </div>
+              }
+            />
 
             <p className="text-sm text-[#7A7A7A] text-center w-[70%]">
               EPSO ha implementado un nuevo modelo de selección más ágil y centrado en competencias,
@@ -363,14 +551,14 @@ const Trabajar = () => {
             </div>
           </div>
         </div>
-        <div className="py-20 flex flex-col items-center gap-5">
-          <div className="pt-8 flex flex-wrap gap-2 w-full justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-semibold text-center">
-            <h2>¿Dónde buscar las</h2>
-            <div className="relative inline-block">
-              <h2 className="text-accent">ofertas de empleo</h2>
+        <div className="py-20 flex flex-col items-center ">
+          <AnimatedHeading
+            firstText="¿Dónde buscar las"
+            secondText="ofertas de empleo"
+            underlineOn="second"
+            svg={
               <svg
-                ref={svgRef4}
-                className="absolute left-0 -bottom-5 w-full h-auto svg-animated"
+                className="absolute left-0 -bottom-5 w-full h-auto"
                 stroke="#00A694"
                 strokeWidth={5}
                 fill="none"
@@ -381,14 +569,14 @@ const Trabajar = () => {
               >
                 <path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path>
               </svg>
-            </div>
-            <h2>en la Unión Europea?</h2>
-          </div>
+            }
+          />
+
           <p className="text-[#7A7A7A] text-sm">
             Hay varias formas de encontrar oportunidades de trabajo en las instituciones europeas,
             dependiendo del tipo de contrato o institución.
           </p>
-          <div className="flex justify-between gap-10 text-[#7A7A7A] text-sm mt-10">
+          <div className="flex justify-between gap-10 text-[#7A7A7A] text-sm mt-20">
             <div className="w-1/2 flex flex-col gap-2">
               <h3 className="text-primary text-xl font-medium">
                 EPSO – Oficina Europea de Selección de Personal

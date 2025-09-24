@@ -10,6 +10,30 @@ const Cursos = () => {
 
   const courses = [
     {
+      courseTitle: 'Conocimientos UE (Ultimate Pack 480)',
+      courseType: 'Entrenamiento',
+      courseDescription:
+        'Entrenamiento 100% práctico con preguntas tipo test que replican la prueba EPSO de Conocimientos de la UE. Simulacros cronometrados, soluciones explicadas y dificultad progresiva para afinar...',
+      courseLink: '#',
+      courseTypeLink: '#',
+    },
+    {
+      courseTitle: 'Conocimientos UE (Starter Pack 120)',
+      courseType: 'Entrenamiento',
+      courseDescription:
+        'Entrenamiento 100% práctico con preguntas tipo test que replican la prueba EPSO de Conocimientos de la UE. Simulacros cronometrados, soluciones explicadas y dificultad progresiva para afinar...',
+      courseLink: '#',
+      courseTypeLink: '#',
+    },
+    {
+      courseTitle: 'Conocimientos UE (Advanced Pack 240)',
+      courseType: 'Entrenamiento',
+      courseDescription:
+        'Entrenamiento 100% práctico con preguntas tipo test que replican la prueba EPSO de Conocimientos de la UE. Simulacros cronometrados, soluciones explicadas y dificultad progresiva para afinar...',
+      courseLink: '#',
+      courseTypeLink: '#',
+    },
+    {
       courseTitle: 'Competencias Digitales (Ultimate Pack 300)',
       courseType: 'Entrenamiento',
       courseDescription:
@@ -109,12 +133,15 @@ const Cursos = () => {
             ? courses.map((course, idx) => (
                 <div
                   key={`${activeFilter}-${idx}`} // Key includes filter for proper re-rendering
-                  className="pl-4 py-[15px] bg-[#222] h-[280px] text-[#fff] shadow-[-6px_7px_1px_5px_#00A694] rounded-[10px] hover:shadow-[6px_7px_1px_5px_#00A694] transition-all duration-500 animate-fadeInUp"
+                  className="pl-4 py-[5px] bg-[#222] h-[280px] text-[#fff] shadow-[-6px_7px_1px_5px_#00A694] rounded-[10px] hover:shadow-[6px_7px_1px_5px_#00A694] transition-all duration-500 animate-fadeInUp"
                   style={{
                     animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both`, // Staggered animation
                   }}
                 >
-                  <a href={`${course.courseLink}`} className="block font-bold mt-[20px] text-lg">
+                  <a
+                    href={`${course.courseLink}`}
+                    className="block font-bold mt-[20px] text-lg pr-8"
+                  >
                     {course.courseTitle}
                   </a>
                   <a
@@ -123,7 +150,7 @@ const Cursos = () => {
                   >
                     <FontAwesomeIcon icon={faTag} fontSize={12} /> {course.courseType}
                   </a>
-                  <p className="pb-3 px-2 text-sm">{course.courseDescription}</p>
+                  <p className="pb-3 pr-8 text-sm">{course.courseDescription}</p>
                 </div>
               ))
             : courses
@@ -131,12 +158,12 @@ const Cursos = () => {
                 .map((c, i) => (
                   <div
                     key={`${activeFilter}-${i}`} // Key includes filter for proper re-rendering
-                    className="pl-4 py-[15px] bg-[#222] h-[280px] text-[#fff] shadow-[-6px_7px_1px_5px_#00A694] rounded-[10px] hover:shadow-[6px_7px_1px_5px_#00A694] transition-all duration-500 animate-fadeInUp"
+                    className="pl-4 py-[5px] bg-[#222] h-[280px] text-[#fff] shadow-[-6px_7px_1px_5px_#00A694] rounded-[10px] hover:shadow-[6px_7px_1px_5px_#00A694] transition-all duration-500 animate-fadeInUp"
                     style={{
                       animation: `fadeInUp 0.6s ease-out ${i * 0.1}s both`, // Staggered animation
                     }}
                   >
-                    <a href={`${c.courseLink}`} className="block font-bold mt-[20px] text-lg">
+                    <a href={`${c.courseLink}`} className="block font-bold mt-[20px] text-lg pr-8">
                       {c.courseTitle}
                     </a>
                     <a
@@ -145,7 +172,7 @@ const Cursos = () => {
                     >
                       <FontAwesomeIcon icon={faTag} fontSize={12} /> {c.courseType}
                     </a>
-                    <p className="pb-3 px-2 text-sm">{c.courseDescription}</p>
+                    <p className="pb-3 pr-8 text-sm">{c.courseDescription}</p>
                   </div>
                 ))}
         </div>
@@ -214,7 +241,7 @@ const Cursos = () => {
               </ul>
               <a
                 href="#"
-                className="mt-4 bg-primary px-[24px] py-[10px] w-fit text-white text-[15px] font-semibold rounded-[3px]"
+                className="mt-4 bg-primary px-[24px] py-[10px] w-fit text-white text-[15px] font-semibold rounded-[3px] hover:bg-accent transition duration-300"
               >
                 Infórmate
               </a>

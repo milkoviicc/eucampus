@@ -49,7 +49,7 @@ const Stack = () => {
   }
 
   return (
-    <div className="flex flex-col gap-[20px] mt-20 px-6">
+    <div className="flex flex-col gap-[20px] mt-10 px-6">
       {tips.map((tip, idx) => (
         <div
           key={idx}

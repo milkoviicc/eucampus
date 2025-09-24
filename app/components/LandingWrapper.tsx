@@ -9,58 +9,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
+import AnimatedHeading from './AnimatedHeading'
 
 const LandingWrapper = () => {
-  const svgRef1 = useRef<SVGSVGElement>(null)
-  const svgRef2 = useRef<SVGSVGElement>(null)
-  const svgRef3 = useRef<SVGSVGElement>(null)
-  const svgRef4 = useRef<SVGSVGElement>(null)
-
-  useEffect(() => {
-    // Function to set up observer for a single SVG
-    const setupObserver = (node: SVGSVGElement) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate')
-            } else {
-              entry.target.classList.remove('animate')
-            }
-          })
-        },
-        { threshold: 0.3 },
-      )
-
-      observer.observe(node)
-      return observer
-    }
-
-    // Set up observers for both SVGs
-    const observers: IntersectionObserver[] = []
-
-    if (svgRef1.current) {
-      observers.push(setupObserver(svgRef1.current))
-    }
-    if (svgRef2.current) {
-      observers.push(setupObserver(svgRef2.current))
-    }
-
-    if (svgRef3.current) {
-      observers.push(setupObserver(svgRef3.current))
-    }
-
-    if (svgRef4.current) {
-      observers.push(setupObserver(svgRef4.current))
-    }
-
-    // Cleanup function
-    return () => {
-      observers.forEach((observer) => observer.disconnect())
-    }
-  }, [])
-
   const courses = [
     {
       courseTitle: 'Competencias Digitales (Ultimate Pack 300)',
@@ -224,13 +176,14 @@ const LandingWrapper = () => {
       {/* BENEFITS SECTION */}
       <div className="py-20 bg-[#F7F7F7]">
         <div className="max-w-[1300px] mx-auto flex flex-col justify-center items-center">
-          <div className="pb-12 flex gap-2 w-full justify-center text-5xl leading-[1.2] font-semibold">
-            <div className="relative">
-              <h2 className="text-accent">Beneficios</h2>
+          <AnimatedHeading
+            firstText="Beneficios"
+            secondText="de trabajar en la UE"
+            underlineOn="first"
+            svg={
               <svg
-                ref={svgRef1}
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute left-0 -bottom-3 w-full svg-animated"
+                className="absolute left-0 top-0 w-full svg-animated"
                 viewBox="0 0 500 150"
                 stroke="#00A694"
                 strokeWidth={9}
@@ -240,9 +193,9 @@ const LandingWrapper = () => {
               >
                 <path d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"></path>
               </svg>
-            </div>
-            <h2>de trabajar en la UE</h2>
-          </div>
+            }
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-8 px-4 md:px-0 w-full">
             <div className="px-5 py-10 flex flex-col justify-center items-center text-center bg-[#E4F3F1] rounded-[10px] shadow-[0_4px_10px_0px_rgba(0,0,0,0.11)]">
               <FontAwesomeIcon icon={faClock} fontSize={50} className="pb-2" />
@@ -270,12 +223,12 @@ const LandingWrapper = () => {
 
       {/* COURSES SECTION */}
       <div className="max-w-[1300px] mx-auto py-20">
-        <div className="pb-8 flex gap-2 w-full justify-center text-5xl leading-[1.2] font-semibold">
-          <h2>Nuestros</h2>
-          <div className="relative">
-            <h2 className="text-accent">cursos</h2>
+        <AnimatedHeading
+          firstText="Nuestros"
+          secondText="cursos"
+          underlineOn="second"
+          svg={
             <svg
-              ref={svgRef2}
               className="absolute -left-2 -top-2 w-[calc(100%+20px)] h-[calc(100%+20px)] svg-animated"
               stroke="#00A694"
               strokeWidth={9}
@@ -287,8 +240,9 @@ const LandingWrapper = () => {
             >
               <path d="M325,18C228.7-8.3,118.5,8.3,78,21C22.4,38.4,4.6,54.6,5.6,77.6c1.4,32.4,52.2,54,142.6,63.7 c66.2,7.1,212.2,7.5,273.5-8.3c64.4-16.6,104.3-57.6,33.8-98.2C386.7-4.9,179.4-1.4,126.3,20.7"></path>
             </svg>
-          </div>
-        </div>
+          }
+        />
+
         <p className="text-center">
           Combinamos explicaciones claras, materiales estructurados y práctica real para que
           aprendas de forma eficaz.
@@ -324,12 +278,12 @@ const LandingWrapper = () => {
       <div className="py-20 bg-[#F7F7F7]">
         <div className="max-w-[1300px] mx-auto flex flex-col">
           <div className="flex flex-col justify-center items-center">
-            <div className="pb-8 flex justify-center gap-2 w-full text-5xl leading-[1.2] font-semibold">
-              <h2 className="text-5xl">Porqué</h2>
-              <div className="relative">
-                <h2 className="text-[43px] text-accent">Elegirnos</h2>
+            <AnimatedHeading
+              firstText="Porqué"
+              secondText={<span className="text-[43px] text-accent">Elegirnos</span>}
+              underlineOn="second"
+              svg={
                 <svg
-                  ref={svgRef3}
                   className="absolute left-0 top-2 svg-animated"
                   stroke="#00A694"
                   strokeWidth={9}
@@ -341,8 +295,9 @@ const LandingWrapper = () => {
                 >
                   <path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path>
                 </svg>
-              </div>
-            </div>
+              }
+            />
+
             <p className="text-[#555]">
               Una plataforma pensada para ayudarte a conseguir trabajo en la Unión Europea.
             </p>
@@ -365,11 +320,12 @@ const LandingWrapper = () => {
 
       {/* CERTIFICATES SECTION */}
       <div className="max-w-[1300px] mx-auto py-20 flex flex-col">
-        <div className="pb-12 flex gap-2 w-full justify-center text-5xl leading-[1.2] font-semibold">
-          <div className="relative">
-            <h2 className="text-accent">Confianza</h2>
+        <AnimatedHeading
+          firstText="Confianza"
+          secondText=", transparencia, reconocimiento"
+          underlineOn="first"
+          svg={
             <svg
-              ref={svgRef4}
               xmlns="http://www.w3.org/2000/svg"
               className="absolute left-0 -bottom-3 w-full svg-animated"
               viewBox="0 0 500 150"
@@ -381,9 +337,9 @@ const LandingWrapper = () => {
             >
               <path d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"></path>
             </svg>
-          </div>
-          <h2>, transparencia, reconocimiento</h2>
-        </div>
+          }
+        />
+
         <p className="text-center text-2xl font-semibold -mt-4">Certificados mediante</p>
 
         <div className="flex justify-center items-center gap-16 mt-10">
