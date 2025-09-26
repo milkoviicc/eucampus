@@ -11,75 +11,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import React from 'react'
 import AnimatedHeading from './AnimatedHeading'
+import Link from 'next/link'
 
-const LandingWrapper = () => {
-  const courses = [
-    {
-      courseTitle: 'Competencias Digitales (Ultimate Pack 300)',
-      courseType: 'Entrenamiento',
-      courseDescription:
-        'Entrenamiento 100% práctico con preguntas tipo test que replican la prueba EPSO de Competencias Digitales. Simulacros cronometrados, soluciones explicadas y dificultad progresiva para afinar...',
-      courseLink: '#',
-      courseTypeLink: '#',
-    },
-    {
-      courseTitle: 'Competencias Digitales (Advanced Pack 150)',
-      courseType: 'Entrenamiento',
-      courseDescription:
-        'Entrenamiento 100% práctico con preguntas tipo test que replican la prueba EPSO de Competencias Digitales. Simulacros cronometrados, soluciones explicadas y dificultad progresiva para afinar...',
-      courseLink: '#',
-      courseTypeLink: '#',
-    },
-    {
-      courseTitle: 'Competencias Digitales (Starter Pack 50)',
-      courseType: 'Entrenamiento',
-      courseDescription:
-        'Entrenamiento 100% práctico con preguntas tipo test que replican la prueba EPSO de Competencias Digitales. Simulacros cronometrados, soluciones explicadas y dificultad progresiva para afinar...',
-      courseLink: '#',
-      courseTypeLink: '#',
-    },
-    {
-      courseTitle: 'Prueba CAST: Módulo de Razonamiento',
-      courseType: 'Prueba CAST',
-      courseDescription:
-        'La fase inicial del CAST consiste en una prueba de razonamiento de carácter eliminatorio. Su finalidad es verificar competencias lógicas básicas para el puesto. Únicamente las personas que la...',
-      courseLink: '#',
-      courseTypeLink: '#',
-    },
-    {
-      courseTitle: 'Generalistas AD5: Módulo de Prueba Escrita',
-      courseType: 'Generalistas AD5',
-      courseDescription:
-        'La prueba escrita de EPSO evalúa tu capacidad para estructurar ideas de manera clara, ordenada y profesional en temas relacionados con la Unión Europea.',
-      courseLink: '#',
-      courseTypeLink: '#',
-    },
-    {
-      courseTitle: 'Generalistas AD5: Módulo de Competencias Digitales',
-      courseType: 'Generalistas AD5',
-      courseDescription:
-        'Evalúa tu capacidad para manejar de forma segura y eficaz la información y las herramientas digitales habituales en el entorno profesional europeo.',
-      courseLink: '#',
-      courseTypeLink: '#',
-    },
-    {
-      courseTitle: 'Generalistas AD5: Módulo de Razonamiento',
-      courseType: 'Generalistas AD5',
-      courseDescription:
-        'Esta es la primera prueba que te vas a encontrar en el proceso de selección, y una de las más importantes: si no la superas, el resto del examen no se corrige.',
-      courseLink: '#',
-      courseTypeLink: '#',
-    },
-    {
-      courseTitle: 'Generalistas AD5: Módulo de Conocimiento UE',
-      courseType: 'Generalistas AD5',
-      courseDescription:
-        'Esta prueba evalúa tu capacidad para entender su funcionamiento, su historia y sus principales áreas de acción. Y no basta con saber “quién es quién”: necesitas comprender qué hace cada...',
-      courseLink: '#',
-      courseTypeLink: '#',
-    },
-  ]
+interface Course {
+  courseTitle: string
+  courseType: string
+  courseDescription: string
+  courseLink: string
+  courseTypeLink: string
+}
 
+const LandingWrapper = ({ courses }: { courses: Course[] }) => {
   const reasons = [
     {
       reasonTitle: 'Todo el contenido en español claro y directo',
@@ -162,6 +104,7 @@ const LandingWrapper = () => {
             width={460}
             height={430}
             alt="Hero image"
+            priority
             className="w-[460px] h-[430px] rounded-[20px]"
           />
           <Image
@@ -249,9 +192,9 @@ const LandingWrapper = () => {
         </p>
         <div className="flex justify-between items-center mt-12">
           <h3 className="font-semibold text-3xl">Top cursos</h3>
-          <a href="#" className="text-[#394c62] text-sm">
+          <Link href="/cursos" className="text-[#394c62] text-sm">
             Ver todo el catálogo
-          </a>
+          </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-8">
           {courses.slice(0, 4).map((course, idx) => (

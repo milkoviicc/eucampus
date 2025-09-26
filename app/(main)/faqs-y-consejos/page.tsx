@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import Breadcrumb from '../components/Breadcrumb'
-import Stack from '../components/Stack'
-import AnimatedHeading from '../components/AnimatedHeading'
+import Breadcrumb from '../../components/Breadcrumb'
+import Stack from '../../components/Stack'
+import AnimatedHeading from '../../components/AnimatedHeading'
 
 const Faqs = () => {
   const [openFaq1Index, setOpenFaq1Index] = useState<number | null>(null)

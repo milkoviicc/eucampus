@@ -14,7 +14,8 @@ type AnimatedHeadingProps = {
   firstText: ReactNode
   secondText: ReactNode
   underlineOn?: 'first' | 'second'
-  svg: ReactNode // ✅ make sure this exists
+  svg: ReactNode
+  className?: string // ✅ allow custom className
 }
 
 const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
@@ -22,6 +23,7 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
   secondText,
   underlineOn = 'second',
   svg,
+  className = '', // ✅ default to empty string
 }) => {
   const svgRef = useRef<SVGSVGElement | null>(null)
 
@@ -50,11 +52,15 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
     svg &&
     cloneElement(svg as ReactElement<SVGProps<SVGSVGElement>>, {
       ref: svgRef as RefObject<SVGSVGElement>,
-      className: `${(svg as ReactElement<SVGProps<SVGSVGElement>>).props.className || ''} svg-animated`,
+      className: `${
+        (svg as ReactElement<SVGProps<SVGSVGElement>>).props.className || ''
+      } svg-animated`,
     })
 
   return (
-    <div className="flex flex-wrap gap-2 w-full justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-semibold text-center pb-8">
+    <div
+      className={`flex flex-wrap gap-2 w-full justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-semibold text-center pb-8 ${className}`}
+    >
       {underlineOn === 'first' ? (
         <>
           <div className="relative inline-block">

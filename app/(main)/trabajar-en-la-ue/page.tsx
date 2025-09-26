@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import Breadcrumb from '../components/Breadcrumb'
+import Breadcrumb from '../../components/Breadcrumb'
 import Image from 'next/image'
-import AnimatedHeading from '../components/AnimatedHeading'
+import AnimatedHeading from '../../components/AnimatedHeading'
 
 const Trabajar = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
@@ -87,7 +87,7 @@ const Trabajar = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="max-w-[1300px] mx-auto pt-20">
+      <div className="max-w-[1300px] mx-auto pt-20" id="porque">
         <AnimatedHeading
           firstText="¿Por qué trabajar en la"
           secondText="Unión Europea?"
@@ -163,7 +163,7 @@ const Trabajar = () => {
             className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-1/2 max-h-[670px]"
           />
         </div>
-        <div className="flex flex-col items-center py-15">
+        <div className="flex flex-col items-center py-15" id="tipos">
           <AnimatedHeading
             firstText="Tipos de empleo"
             secondText="en la Unión Europea"
@@ -397,7 +397,7 @@ const Trabajar = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-10 py-15">
+        <div className="flex flex-col gap-10 py-15" id="requisitos">
           <AnimatedHeading
             firstText={<span className="text-accent leading-[2]">Requisitos generales</span>}
             secondText="para trabajar en la Unión Europea"
@@ -472,7 +472,7 @@ const Trabajar = () => {
               className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-1/2"
             />
           </div>
-          <div className="py-20 flex flex-col gap-2 justify-center items-center">
+          <div className="py-20 flex flex-col gap-2 justify-center items-center" id="proceso">
             <AnimatedHeading
               firstText="Cómo es el"
               secondText="proceso de selección"
@@ -551,7 +551,7 @@ const Trabajar = () => {
             </div>
           </div>
         </div>
-        <div className="py-20 flex flex-col items-center ">
+        <div className="py-20 flex flex-col items-center" id="ofertas">
           <AnimatedHeading
             firstText="¿Dónde buscar las"
             secondText="ofertas de empleo"

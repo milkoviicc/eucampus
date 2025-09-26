@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react'
-import Breadcrumb from '../components/Breadcrumb'
+import Breadcrumb from '../../components/Breadcrumb'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
-import { sendMail } from '../lib/actions/sendMail'
+import { sendMail } from '../../lib/actions/sendMail'
 
 const Contacto = () => {
   const [name, setName] = useState('')
