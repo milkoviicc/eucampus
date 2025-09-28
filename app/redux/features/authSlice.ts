@@ -100,6 +100,7 @@ export const registerThunk = createAsyncThunk<
 
 export const logoutThunk = createAsyncThunk('auth/logout', async () => {
   removeCookie('auth')
+  console.log('here')
   return true
 })
 

@@ -216,7 +216,6 @@ const Login = () => {
                 className="flex justify-center items-center bg-primary text-white w-full py-3 font-[400] hover:opacity-90 transform duration-300 cursor-pointer"
               />
               {error && <p className="text-red-500">{error}</p>}
-              {isAuthenticated && <p className="text-green-500">Welcome {user?.fullName}</p>}
             </form>
             <div className="flex items-center text-sm gap-2 mt-12">
               <button

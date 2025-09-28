@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import { useAppSelector } from '../redux/hooks'
+import UserMenu from './UserMenu'
 
 const Navbar = () => {
   const { user } = useAppSelector((state) => state.auth)
@@ -232,7 +233,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex pt-[7px] gap-3 items-center uppercase text-[14px]">
-          <Link href="/login">{user ? user.fullName : 'Login'}</Link>
+          <UserMenu user={user} />
           <Link href="/login">
             <ShoppingCart size={16} />
           </Link>
