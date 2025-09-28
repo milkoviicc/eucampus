@@ -2,5 +2,5 @@
 'use server'
 
 export async function sendMail(formData: FormData) {
-  // send email logic
+  console.log(formData)
 }

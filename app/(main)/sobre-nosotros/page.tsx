@@ -1,7 +1,7 @@
 import React from 'react'
-import Breadcrumb from '../components/Breadcrumb'
-import AnimatedHeading from '../components/AnimatedHeading'
 import Image from 'next/image'
+import Breadcrumb from '@/app/components/Breadcrumb'
+import AnimatedHeading from '@/app/components/AnimatedHeading'
 
 const SobreNosotros = () => {
   return (

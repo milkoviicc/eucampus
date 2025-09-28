@@ -14,7 +14,6 @@ import { useAppSelector } from '@/app/redux/hooks'
 import { logoutThunk, User } from '@/app/redux/features/authSlice'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/app/redux/store'
-import { routerServerGlobal } from 'next/dist/server/lib/router-utils/router-server-context'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 type Course = {
