@@ -6,7 +6,7 @@ const GeneralistasAD5 = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="py-20 max-w-[1300px] mx-auto">
+      <div className="py-20 max-w-[1300px] 2xl:max-w-[1600px] mx-auto">
         <div className="text-center font-semibold">
           <h3 className="text-2xl">¿No es la opción adecuada para ti?</h3>
           <h1 className="text-3xl">Explora nuestro Pack Generalistas AD5</h1>

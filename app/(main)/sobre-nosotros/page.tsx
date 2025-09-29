@@ -7,7 +7,7 @@ const SobreNosotros = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="max-w-[1300px] mx-auto flex flex-col gap-5 py-20">
+      <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-5 py-20">
         <div className="flex gap-10">
           <div className="flex flex-col justify-center gap-2 w-1/2">
             <AnimatedHeading

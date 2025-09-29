@@ -87,7 +87,7 @@ const Trabajar = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="max-w-[1300px] mx-auto pt-20" id="porque">
+      <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto pt-20" id="porque">
         <AnimatedHeading
           firstText="¿Por qué trabajar en la"
           secondText="Unión Europea?"

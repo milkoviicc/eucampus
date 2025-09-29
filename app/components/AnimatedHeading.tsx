@@ -59,12 +59,12 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
 
   return (
     <div
-      className={`flex flex-wrap gap-2 w-full justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-semibold text-center pb-8 ${className}`}
+      className={`flex flex-col flex-wrap sm:flex-row gap-2 w-full justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-semibold text-center pb-8 ${className}`}
     >
       {underlineOn === 'first' ? (
         <>
-          <div className="relative inline-block">
-            <h2 className="text-accent">{firstText}</h2>
+          <div className="relative inline-block w-fit mx-auto sm:mx-0">
+            <h2 className="text-accent w-fit">{firstText}</h2>
             {svgWithRef}
           </div>
           <h2>{secondText}</h2>

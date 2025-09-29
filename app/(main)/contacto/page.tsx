@@ -55,7 +55,7 @@ const Contacto = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="max-w-[1300px] mx-auto py-20 h-full">
+      <div className="lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto py-20 h-full">
         <div className="text-center">
           <h4 className="text-lg">Apoyo cuando lo necesites</h4>
           <h1 className="text-5xl my-4">Estamos aquí para ayudarte.</h1>

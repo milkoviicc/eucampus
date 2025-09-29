@@ -18,7 +18,7 @@ const Courses = ({ courses }: { courses: Courses }) => {
   const [activeFilter, setActiveFilter] = useState('Todo')
 
   return (
-    <div className="max-w-[1300px] mx-auto flex flex-col gap-4 py-20">
+    <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-4 py-20">
       <div className="flex gap-4 uppercase text-primary">
         <button
           className={`text-left uppercase text-xs font-semibold rounded-t-[10px] py-[15px] px-[14px] flex-1 hover:bg-primary hover:text-white duration-300 cursor-pointer ${activeFilter === 'Todo' ? 'bg-primary text-white' : 'bg-[#DDD]'}`}

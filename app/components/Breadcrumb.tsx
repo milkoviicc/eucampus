@@ -20,7 +20,7 @@ const Breadcrumb = () => {
         backgroundSize: 'cover',
       }}
     >
-      <div className="max-w-[1300px] h-full mx-auto flex flex-col justify-center gap-2 text-[rgba(255,255,255,0.8)]">
+      <div className="max-w-[1300px] 2xl:max-w-[1600px] h-full mx-auto flex flex-col justify-center gap-2 text-[rgba(255,255,255,0.8)]">
         <div className="flex gap-2 uppercase text-xs">
           <Link href="/">Home</Link>
           <p>/</p>

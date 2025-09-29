@@ -12,6 +12,7 @@ import Image from 'next/image'
 import React from 'react'
 import AnimatedHeading from './AnimatedHeading'
 import Link from 'next/link'
+import { Marquee } from '@/components/ui/marquee'
 
 interface Course {
   courseTitle: string
@@ -65,21 +66,42 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
     },
   ]
 
+  const certificates = [
+    {
+      imgSrc: 'https://learnwithjusticeu.com/wp-content/uploads/2023/01/credly-logo-400x150px.png',
+    },
+    {
+      imgSrc: 'https://marianos98.sg-host.com/wp-content/uploads/2025/06/logo-2.jpg',
+    },
+    {
+      imgSrc: 'https://marianos98.sg-host.com/wp-content/uploads/2025/06/logo-3.jpg',
+    },
+    {
+      imgSrc: 'https://marianos98.sg-host.com/wp-content/uploads/2025/06/logo-4.jpg',
+    },
+    {
+      imgSrc: 'https://marianos98.sg-host.com/wp-content/uploads/2025/06/logo-5.jpg',
+    },
+  ]
+
   return (
     <>
-      <div className="max-w-[1300px] mx-auto flex justify-between items-center">
-        <div className="font-montserrat w-1/2 py-35">
-          <h3 className="text-xl font-light w-fit">
+      <div className="lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col-reverse md:flex-row justify-between items-center px-4 lg:px-0 mt-[100px] lg:mt-0">
+        {/* Hero Text */}
+        <div className="font-montserrat w-full px-2 md:px-8 md:w-1/2 pb-12 lg:py-35 lg:px-8 text-left">
+          <h3 className="text-xs md:text-[14px] lg:text-base xl:text-xl font-light lg:mx-0">
             La #1 en preparación EPSO en español, sin rodeos
           </h3>
-          <h1 className="text-[40px] font-extralight leading-6 mt-8 w-fit">
+          <h1 className="text-[24px] md:text-[16px] lg:text-[30px] xl:text-[40px] font-extralight leading-8 lg:leading-6 mt-6 md:mt-2 lg:mt-4 xl:mt-8 lg:mx-0">
             Construye tu futuro en la
           </h1>
-          <h1 className="w-fit">
-            <b className="text-[70px]">Unión Europea</b>
+          <h1>
+            <b className="text-[40px] md:text-[24px] lg:text-[52px] xl:text-[70px]">
+              Unión Europea
+            </b>
           </h1>
 
-          <div className="font-poppins leading-5">
+          <div className="font-poppins leading-6 md:leading-4 lg:leading-5 mt-2 lg:mt-6 text-xs md:text-[10px] lg:text-sm xl:text-base lg:w-full">
             <p>
               Ayudamos a personas a prepararse para conseguir empleo en la Unión Europea, ya sea
               mediante oposiciones, contratos temporales o procesos de selección abiertos.
@@ -93,29 +115,32 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
 
           <a
             href="#"
-            className="bg-primary font-['Muli',sans-serif] text-white border-1 border-[#062D6F] rounded-[5px] py-3 px-6 flex gap-2 items-center w-fit mt-5"
+            className="bg-primary font-['Muli',sans-serif] text-white border border-[#062D6F] rounded-[5px] py-3 px-6 md:py-2 md:px-3 lg:py-3 lg:px-6 flex gap-2 items-center w-fit lg:mx-0 mt-5"
           >
-            Nuestra cursos <FontAwesomeIcon icon={faChevronRight} className="h-[12px]" />{' '}
+            Nuestra cursos <FontAwesomeIcon icon={faChevronRight} className="h-[12px]" />
           </a>
         </div>
-        <div className="relative">
+
+        {/* Hero Image */}
+        <div className="relative mb-8 lg:mb-0 px-2 md:px-8">
           <Image
             src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/portada.jpg"
             width={460}
             height={430}
             alt="Hero image"
             priority
-            className="w-[460px] h-[430px] rounded-[20px]"
+            className="w-full lg:w-[500px] h-auto lg:h-[430px] rounded-[20px] mx-auto lg:mx-0"
           />
           <Image
             src="/images/hero-pattern.png"
             width={88}
             height={88}
             alt="Bg img"
-            className="w-[88px] h-[88px] absolute -bottom-5 -right-12 opacity-[0.18]"
+            className="w-[88px] h-[70px] lg:h-[88px] absolute -bottom-5 -right-12 opacity-[0.18]"
           />
         </div>
       </div>
+
       {/* BENEFITS SECTION */}
       <div className="py-20 bg-[#F7F7F7]">
         <div className="max-w-[1300px] mx-auto flex flex-col justify-center items-center">
@@ -139,7 +164,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
             }
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-8 px-4 md:px-0 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-12 xl:px-4 w-full">
             <div className="px-5 py-10 flex flex-col justify-center items-center text-center bg-[#E4F3F1] rounded-[10px] shadow-[0_4px_10px_0px_rgba(0,0,0,0.11)]">
               <FontAwesomeIcon icon={faClock} fontSize={50} className="pb-2" />
               <h3 className="text-[#222] text-2xl font-semibold">Conciliación</h3>
@@ -165,7 +190,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
       </div>
 
       {/* COURSES SECTION */}
-      <div className="max-w-[1300px] mx-auto py-20">
+      <div className="max-w-[1300px] mx-auto py-20 px-2 md:px-8 2xl:px-0">
         <AnimatedHeading
           firstText="Nuestros"
           secondText="cursos"
@@ -190,19 +215,19 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
           Combinamos explicaciones claras, materiales estructurados y práctica real para que
           aprendas de forma eficaz.
         </p>
-        <div className="flex justify-between items-center mt-12">
+        <div className="flex justify-between items-center mt-12 px-12 xl:px-4">
           <h3 className="font-semibold text-3xl">Top cursos</h3>
           <Link href="/cursos" className="text-[#394c62] text-sm">
             Ver todo el catálogo
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-12 xl:px-4 w-full">
           {courses.slice(0, 4).map((course, idx) => (
             <div
               key={idx}
               className="pl-4 py-[15px] bg-[#222] h-[280px] text-[#fff] shadow-[-6px_7px_1px_5px_#00A694] rounded-[10px] hover:shadow-[6px_7px_1px_5px_#00A694] transition-all duration-500"
             >
-              <a href={`${course.courseLink}`} className="block font-bold mt-[20px] text-lg">
+              <a href={`${course.courseLink}`} className="block font-bold mt-[20px] text-lg pr-3">
                 {course.courseTitle}
               </a>
               <a
@@ -211,7 +236,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
               >
                 <FontAwesomeIcon icon={faTag} fontSize={12} /> {course.courseType}
               </a>
-              <p className="pb-3 px-2 text-sm">{course.courseDescription}</p>
+              <p className="pb-3 pl-2 text-sm pr-4 lg:px-1">{course.courseDescription}</p>
             </div>
           ))}
         </div>
@@ -223,7 +248,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
           <div className="flex flex-col justify-center items-center">
             <AnimatedHeading
               firstText="Porqué"
-              secondText={<span className="text-[43px] text-accent">Elegirnos</span>}
+              secondText={<span className="text-[30px] lg:text-[43px] text-accent">Elegirnos</span>}
               underlineOn="second"
               svg={
                 <svg
@@ -241,11 +266,11 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
               }
             />
 
-            <p className="text-[#555]">
+            <p className="text-[#555] px-8 text-center">
               Una plataforma pensada para ayudarte a conseguir trabajo en la Unión Europea.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-12 px-12 xl:px-4">
             {reasons.map((reason, index) => (
               <div className="flex gap-3 w-full" key={index}>
                 <FontAwesomeIcon icon={faCircleCheck} fontSize={32} className="text-accent" />
@@ -262,10 +287,10 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
       </div>
 
       {/* CERTIFICATES SECTION */}
-      <div className="max-w-[1300px] mx-auto py-20 flex flex-col">
+      <div className="max-w-[1300px] mx-auto py-20 flex flex-col px-12">
         <AnimatedHeading
-          firstText="Confianza"
-          secondText=", transparencia, reconocimiento"
+          firstText="Confianza,"
+          secondText="transparencia, reconocimiento"
           underlineOn="first"
           svg={
             <svg
@@ -285,9 +310,24 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
 
         <p className="text-center text-2xl font-semibold -mt-4">Certificados mediante</p>
 
-        <div className="flex justify-center items-center gap-16 mt-10">
+        <div className="md:hidden bloc mt-10">
+          <Marquee pauseOnHover className="[--duration:10s]">
+            {certificates.map((certificate, idx) => (
+              <Image
+                key={idx}
+                src={certificate.imgSrc}
+                width={240}
+                height={600}
+                alt={`Certificate ${idx + 1}`}
+                className="w-fit h-auto max-h-[400px] sm:max-h-[50px]"
+              />
+            ))}
+          </Marquee>
+        </div>
+
+        <div className="md:flex hidden justify-center items-center gap-16 mt-10 ">
           <Image
-            src="https://marianos98.sg-host.com/wp-content/uploads/elementor/thumbs/credly_logo_icon_247258-r7kwnu6q9hehvntjz3e0jy15u02nib1l7y9pl6mf40.png"
+            src="https://learnwithjusticeu.com/wp-content/uploads/2023/01/credly-logo-400x150px.png"
             width={240}
             height={600}
             alt="Certificate 1"

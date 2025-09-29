@@ -304,7 +304,7 @@ const Faqs = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="max-w-[1300px] mx-auto flex flex-col py-20">
+      <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col py-20">
         <AnimatedHeading
           firstText="Consejos prácticos"
           secondText="para los candidatos"
