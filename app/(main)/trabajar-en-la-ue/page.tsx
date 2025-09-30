@@ -113,7 +113,7 @@ const Trabajar = () => {
         />
 
         {/* Section: Why - stacked on small, side-by-side from md */}
-        <div className="py-10 flex flex-col md:flex-row md:justify-between md:items-start gap-6 md:gap-12">
+        <div className="py-10 flex flex-col md:flex-row md:justify-between md:items-start gap-6 lg:gap-12">
           <div className="flex flex-col gap-5 text-[#7A7A7A] text-justify text-sm w-full md:w-1/2">
             <h3 className="text-lg lg:text-2xl text-primary font-semibold">
               Estabilidad y proyección profesional
@@ -163,11 +163,11 @@ const Trabajar = () => {
 
           <div className="w-full md:w-1/2 flex-shrink-0">
             <Image
-              src="https://marianos98.sg-host.com/wp-content/uploads/2020/07/Screenshot-2020-07-16-at-11.29.00-PM.png"
+              src="https://eucampus.com/wp-content/uploads/2025/09/empresaria-joven-feliz-que-sostiene-el-diario-que-mira-la-camara-en-el-lugar-de-trabajo-1025x1536.jpg"
               alt=""
               width={500}
               height={500}
-              className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-full h-auto max-h-[670px] object-cover"
+              className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-[10px] w-full h-auto max-h-[670px] object-top object-cover"
             />
           </div>
         </div>
@@ -194,13 +194,13 @@ const Trabajar = () => {
             }
           />
 
-          <p className="text-[#7A7A7A] text-center text-sm max-w-3xl mt-2 px-2">
+          <p className="text-[#7A7A7A] text-center text-sm mt-2 px-4">
             Las instituciones de la UE ofrecen distintas formas de trabajar en función del tipo de
             contrato, la duración y las tareas a desempeñar. A continuación te explicamos las
             principales categorías:
           </p>
 
-          <div className="flex flex-col items-center w-full gap-2 lg:gap-10 mt-10 px-2">
+          <div className="flex flex-col items-center w-full gap-2 lg:gap-10 mt-10 px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 w-full justify-center">
               {/* Top row */}
               <button
@@ -229,7 +229,7 @@ const Trabajar = () => {
             </div>
 
             <div className="flex w-full justify-center">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-4xl lg:mt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full lg:mt-2">
                 <button
                   type="button"
                   className={`w-full px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 3 ? 'bg-accent' : 'bg-primary'}`}
@@ -247,7 +247,7 @@ const Trabajar = () => {
               </div>
             </div>
 
-            <div className="w-full px-2 md:px-0 max-w-5xl">
+            <div className="w-full mt-8 lg:mt-0">
               {employmentTab === 0 ? (
                 <div className="flex flex-col gap-3 text-[#7A7A7A]">
                   <p>
@@ -517,11 +517,11 @@ const Trabajar = () => {
 
             <div className="w-full md:w-1/2 flex-shrink-0">
               <Image
-                src="https://marianos98.sg-host.com/wp-content/uploads/2025/06/eu-4.png"
+                src="https://eucampus.com/wp-content/uploads/2025/09/trabajo-1152x1536.jpg"
                 alt=""
                 width={500}
                 height={500}
-                className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-full h-auto object-cover"
+                className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-[10px] w-full h-auto object-cover"
               />
             </div>
           </div>
@@ -548,20 +548,20 @@ const Trabajar = () => {
               }
             />
 
-            <p className="text-sm text-[#7A7A7A] text-center max-w-3xl px-2">
+            <p className="text-sm text-[#7A7A7A] text-center px-4">
               EPSO ha implementado un nuevo modelo de selección más ágil y centrado en competencias,
               eliminando las pruebas orales y el Assessment Centre. El proceso se realiza
               completamente en línea y se completa en una única sesión de pruebas.
             </p>
 
-            <div className="flex flex-col md:flex-row gap-8 mt-10 w-full max-w-5xl px-2">
+            <div className="flex flex-col md:flex-row gap-8 mt-10 w-full px-2">
               <div className="w-full md:w-1/2">
                 <Image
-                  src="https://marianos98.sg-host.com/wp-content/uploads/2020/07/course2.png"
+                  src="https://eucampus.com/wp-content/uploads/2020/07/course2.png"
                   alt=""
                   width={500}
                   height={500}
-                  className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-full h-auto object-cover"
+                  className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-[10px] w-full h-auto object-cover"
                 />
               </div>
 
@@ -633,12 +633,12 @@ const Trabajar = () => {
             }
           />
 
-          <p className="text-[#7A7A7A] text-sm text-center max-w-3xl px-2">
+          <p className="text-[#7A7A7A] text-sm text-center px-4">
             Hay varias formas de encontrar oportunidades de trabajo en las instituciones europeas,
             dependiendo del tipo de contrato o institución.
           </p>
 
-          <div className="flex flex-col md:flex-row md:justify-between gap-6 text-[#7A7A7A] text-sm mt-8 w-full max-w-5xl px-2">
+          <div className="flex flex-col md:flex-row md:justify-between gap-6 text-[#7A7A7A] text-sm mt-8 w-full px-4">
             <div className="w-full md:w-1/2 flex flex-col gap-4">
               <h3 className="text-primary text-xl font-medium">
                 EPSO – Oficina Europea de Selección de Personal
@@ -697,7 +697,7 @@ const Trabajar = () => {
 
             <div className="w-full md:w-1/2 flex-shrink-0">
               <Image
-                src="https://marianos98.sg-host.com/wp-content/uploads/2025/06/eu-3.png"
+                src="https://eucampus.com/wp-content/uploads/2025/09/mujer-sonriente-junto-una-ventana-1025x1536.jpg"
                 alt=""
                 width={500}
                 height={500}

@@ -13,6 +13,7 @@ import React from 'react'
 import AnimatedHeading from './AnimatedHeading'
 import Link from 'next/link'
 import { Marquee } from '@/components/ui/marquee'
+import Generalistas from './Generalistas'
 
 interface Course {
   courseTitle: string
@@ -86,10 +87,10 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
 
   return (
     <>
-      <div className="lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col-reverse md:flex-row justify-between items-center px-4 lg:px-0 mt-[100px] lg:mt-0">
+      <div className="lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col-reverse lg:flex-row justify-between items-center px-4 lg:px-0 mt-[100px] lg:mt-0">
         {/* Hero Text */}
-        <div className="font-montserrat w-full px-2 md:px-8 md:w-1/2 pb-12 lg:py-35 lg:px-8 text-left">
-          <h3 className="text-xs md:text-[14px] lg:text-base xl:text-xl font-light lg:mx-0">
+        <div className="font-montserrat w-full px-2 lg:w-1/2 pb-12 lg:py-35 lg:px-8 text-left">
+          <h3 className="text-xs lg:text-[14px] lg:text-base xl:text-xl font-light lg:mx-0">
             La #1 en preparación EPSO en español, sin rodeos
           </h3>
           <h1 className="text-[24px] md:text-[16px] lg:text-[30px] xl:text-[40px] font-extralight leading-8 lg:leading-6 mt-6 md:mt-2 lg:mt-4 xl:mt-8 lg:mx-0">
@@ -101,7 +102,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
             </b>
           </h1>
 
-          <div className="font-poppins leading-6 md:leading-4 lg:leading-5 mt-2 lg:mt-6 text-xs md:text-[10px] lg:text-sm xl:text-base lg:w-full">
+          <div className="font-poppins leading-6 md:leading-4 lg:leading-5 mt-2 lg:mt-6 text-xs lg:text-[10px] lg:text-sm xl:text-base lg:w-full">
             <p>
               Ayudamos a personas a prepararse para conseguir empleo en la Unión Europea, ya sea
               mediante oposiciones, contratos temporales o procesos de selección abiertos.
@@ -122,15 +123,16 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
         </div>
 
         {/* Hero Image */}
-        <div className="relative mb-8 lg:mb-0 px-2 md:px-8">
-          <Image
-            src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/portada.jpg"
-            width={460}
-            height={430}
-            alt="Hero image"
-            priority
-            className="w-full lg:w-[500px] h-auto lg:h-[430px] rounded-[20px] mx-auto lg:mx-0"
-          />
+        <div className="relative mb-8 lg:mb-0 px-2 lg:px-8">
+          <video
+            src="https://eucampus.com/wp-content/uploads/2025/09/video-2.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            controlsList="nodownload"
+            className="w-full lg:w-[500px] h-auto lg:h-[430px] mx-auto lg:mx-0"
+          ></video>
           <Image
             src="/images/hero-pattern.png"
             width={88}
@@ -164,7 +166,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
             }
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-4 xl:px-4 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-4 xl:px-4 w-full">
             <div className="px-5 py-10 flex flex-col justify-center items-center text-center bg-[#E4F3F1] rounded-[10px] shadow-[0_4px_10px_0px_rgba(0,0,0,0.11)]">
               <FontAwesomeIcon icon={faClock} fontSize={50} className="pb-2" />
               <h3 className="text-[#222] text-2xl font-semibold">Conciliación</h3>
@@ -190,7 +192,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
       </div>
 
       {/* COURSES SECTION */}
-      <div className="max-w-[1300px] mx-auto py-20 px-2 md:px-8 2xl:px-0">
+      <div className="max-w-[1300px] mx-auto py-20 px-2 lg:px-8 2xl:px-0">
         <AnimatedHeading
           firstText="Nuestros"
           secondText="cursos"
@@ -221,7 +223,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
             Ver todo el catálogo
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-4 xl:px-4 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-4 xl:px-4 w-full">
           {courses.slice(0, 4).map((course, idx) => (
             <div
               key={idx}
@@ -240,6 +242,10 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="w-full lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto px-4 lg:px-0 pb-20">
+        <Generalistas />
       </div>
 
       {/* REASONS SECTIONS */}
@@ -312,7 +318,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
 
         <p className="text-center text-2xl font-semibold -mt-4">Certificados mediante</p>
 
-        <div className="md:hidden bloc mt-10">
+        <div className="md:hidden block mt-10">
           <Marquee pauseOnHover className="[--duration:10s]">
             {certificates.map((certificate, idx) => (
               <Image

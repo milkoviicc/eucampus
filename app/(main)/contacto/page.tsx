@@ -68,11 +68,7 @@ const Contacto = () => {
         </div>
 
         {/* responsive form: grid on md, stacked on mobile */}
-        <form
-          action={sendMail}
-          method="POST"
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8"
-        >
+        <form action={sendMail} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
           {/* Nombre - spans full width on md */}
           <div className="flex flex-col gap-1 md:col-span-2">
             <label htmlFor="nombre" className="text-sm">

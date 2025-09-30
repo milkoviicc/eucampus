@@ -30,11 +30,11 @@ const Navbar = () => {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 h-[60px] bg-white z-50 shadow-[0_1px_0_0_rgba(0,0,0,0.1)]">
-        <div className="max-w-screen sm:max-w-[1300px] 2xl:max-w-[1600px] sm:mx-auto flex justify-between items-center text-secondary h-full text-[#222] bg-white px-4 lg:px-8">
+        <div className="max-w-screen lg:max-w-[1300px] 2xl:max-w-[1600px] lg:px-0 mx-auto flex justify-between items-center text-secondary h-full text-[#222] bg-white px-4">
           {/* Logo - always visible */}
           <Link href="/" className="flex items-center h-full">
             <Image
-              src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/logo-web-hor.png"
+              src="https://eucampus.com/wp-content/uploads/2025/05/logo-web-hor.png"
               className="object-contain"
               width={195.962}
               height={29.9875}
@@ -78,7 +78,7 @@ const Navbar = () => {
                       </li>
                       <hr />
                       <li className="py-1 cursor-pointer hover:bg-gray-100 transition-colors">
-                        <Link href="#">
+                        <Link href="/secretaries">
                           <FontAwesomeIcon icon={faArrowRight} color="#000" /> Secretaries
                         </Link>
                       </li>
@@ -89,14 +89,8 @@ const Navbar = () => {
                     <h5 className="text-xl text-primary font-semibold">Próximos cursos</h5>
                     <ul className="uppercase text-accent text-xl mt-2">
                       <li className="py-1 cursor-pointer hover:bg-gray-100 transition-colors">
-                        <Link href="#">
+                        <Link href="/asistentes-ast3">
                           <FontAwesomeIcon icon={faArrowRight} color="#000" /> Asistentes
-                        </Link>
-                      </li>
-                      <hr />
-                      <li className="py-1 cursor-pointer hover:bg-gray-100 transition-colors">
-                        <Link href="#">
-                          <FontAwesomeIcon icon={faArrowRight} color="#000" /> Project Management
                         </Link>
                       </li>
                       <hr />
@@ -285,7 +279,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-4 px-1 border-b">
           <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center">
             <Image
-              src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/logo-web-hor.png"
+              src="https://eucampus.com/wp-content/uploads/2025/05/logo-web-hor.png"
               className="object-contain"
               width={160}
               height={26}
@@ -333,8 +327,15 @@ const Navbar = () => {
                   <Link href="#" onClick={() => setIsOpen(false)} className="block py-2">
                     Prueba Cast
                   </Link>
-                  <Link href="#" onClick={() => setIsOpen(false)} className="block py-2">
+                  <Link href="/secretaires" onClick={() => setIsOpen(false)} className="block py-2">
                     Secretaries
+                  </Link>
+                  <Link
+                    href="/asistentes-ast3"
+                    onClick={() => setIsOpen(false)}
+                    className="block py-2"
+                  >
+                    Asistentes
                   </Link>
                 </div>
               </div>

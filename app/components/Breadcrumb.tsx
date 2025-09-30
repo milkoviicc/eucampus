@@ -31,7 +31,9 @@ const Breadcrumb = () => {
             ? splitPath.slice(0, -2) + 'UE'
             : splitPath.endsWith('ad5')
               ? splitPath.slice(0, -3) + 'AD5'
-              : splitPath}
+              : splitPath.endsWith('ast3')
+                ? splitPath.slice(0, -4) + '(AST3)'
+                : splitPath}
         </h3>
       </div>
     </div>

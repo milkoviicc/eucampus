@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       new URL('https://marianos98.sg-host.com/**'),
       new URL('https://learnwithjusticeu.com/**'),
+      new URL('https://eucampus.com/**'),
     ],
   },
 }
