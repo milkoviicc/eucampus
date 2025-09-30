@@ -20,13 +20,13 @@ const Breadcrumb = () => {
         backgroundSize: 'cover',
       }}
     >
-      <div className="max-w-[1300px] 2xl:max-w-[1600px] h-full mx-auto flex flex-col justify-center gap-2 text-[rgba(255,255,255,0.8)]">
+      <div className="w-full px-4 lg:max-w-[1300px] lg:px-0 2xl:max-w-[1600px] h-full mx-auto flex flex-col justify-center gap-2 text-[rgba(255,255,255,0.8)]">
         <div className="flex gap-2 uppercase text-xs">
           <Link href="/">Home</Link>
           <p>/</p>
           <p>{splitPath}</p>
         </div>
-        <h3 className="capitalize text-4xl font-semibold text-white">
+        <h3 className="capitalize text-2xl lg:text-4xl font-semibold text-white">
           {splitPath.endsWith('ue')
             ? splitPath.slice(0, -2) + 'UE'
             : splitPath.endsWith('ad5')

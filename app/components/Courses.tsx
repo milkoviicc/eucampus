@@ -16,34 +16,62 @@ type Courses = Course[]
 
 const Courses = ({ courses }: { courses: Courses }) => {
   const [activeFilter, setActiveFilter] = useState('Todo')
+  const filters = ['Todo', 'Entrenamiento', 'Prueba CAST', 'Generalistas AD5']
 
   return (
-    <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-4 py-20">
-      <div className="flex gap-4 uppercase text-primary">
-        <button
-          className={`text-left uppercase text-xs font-semibold rounded-t-[10px] py-[15px] px-[14px] flex-1 hover:bg-primary hover:text-white duration-300 cursor-pointer ${activeFilter === 'Todo' ? 'bg-primary text-white' : 'bg-[#DDD]'}`}
-          onClick={() => setActiveFilter('Todo')}
-        >
-          Todo
-        </button>
-        <button
-          className={`text-left uppercase text-xs font-semibold rounded-t-[10px] py-[15px] px-[14px] flex-1 hover:bg-primary hover:text-white duration-300 cursor-pointer ${activeFilter === 'Entrenamiento' ? 'bg-primary text-white' : 'bg-[#DDD]'}`}
-          onClick={() => setActiveFilter('Entrenamiento')}
-        >
-          Entrenamiento
-        </button>
-        <button
-          className={`text-left uppercase text-xs font-semibold rounded-t-[10px] py-[15px] px-[14px] flex-1 hover:bg-primary hover:text-white duration-300 cursor-pointer ${activeFilter === 'Prueba CAST' ? 'bg-primary text-white' : 'bg-[#DDD]'}`}
-          onClick={() => setActiveFilter('Prueba CAST')}
-        >
-          Prueba CAST
-        </button>
-        <button
-          className={`text-left uppercase text-xs font-semibold rounded-t-[10px] py-[15px] px-[14px] flex-1 hover:bg-primary hover:text-white duration-300 cursor-pointer ${activeFilter === 'Generalistas AD5' ? 'bg-primary text-white' : 'bg-[#DDD]'}`}
-          onClick={() => setActiveFilter('Generalistas AD5')}
-        >
-          Generalistas AD5
-        </button>
+    <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-4 py-20 px-4 xl:px-0">
+      <div className="w-full">
+        {/* dropdown for small screens */}
+        <div className="block lg:hidden mt-4">
+          <label htmlFor="courses-filter" className="sr-only">
+            Filtrar cursos
+          </label>
+
+          <div className="relative">
+            <select
+              id="courses-filter"
+              value={activeFilter}
+              onChange={(e) => setActiveFilter(e.target.value)}
+              className="appearance-none w-full bg-primary text-[#fafafa] text-xs font-semibold py-3 px-4 rounded-[10px] focus:outline-none"
+            >
+              {filters.map((filter, idx) => (
+                <option key={idx} value={filter}>
+                  {filter}
+                </option>
+              ))}
+            </select>
+
+            {/* simple chevron — optional, matches native select */}
+            <svg
+              className="pointer-events-none absolute right-3 top-1/2 translate-y-[-50%] w-4 h-4 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+
+        {/* button grid for md+ */}
+        <div className="hidden lg:grid-cols-4 lg:grid mt-4 gap-4 uppercase text-primary">
+          {filters.map((f) => (
+            <button
+              key={f}
+              onClick={() => setActiveFilter(f)}
+              className={`text-left uppercase text-xs font-semibold rounded-t-[10px] py-[15px] px-[14px] flex-1 hover:bg-primary hover:text-white duration-300 cursor-pointer ${
+                activeFilter === f ? 'bg-primary text-white' : 'bg-[#DDD]'
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-8">
         {activeFilter === 'Todo'
@@ -90,13 +118,18 @@ const Courses = ({ courses }: { courses: Courses }) => {
                 </div>
               ))}
       </div>
+
       <div className="pt-20">
         <div className="text-center font-semibold">
-          <h3 className="text-2xl">¿No es la opción adecuada para ti?</h3>
-          <h1 className="text-3xl">Explora nuestro Pack Generalistas AD5</h1>
+          <h3 className="text-lg md:text-2xl">¿No es la opción adecuada para ti?</h3>
+          <h1 className="text-2xl mt-2 md:text-3xl md:mt-0">
+            Explora nuestro Pack Generalistas AD5
+          </h1>
         </div>
-        <div className="flex pt-8">
-          <div className="flex flex-col gap-1 w-full">
+
+        {/* Responsive bottom section: image on top for small screens, image on right for md+ */}
+        <div className="flex flex-col md:flex-row md:items-center pt-8 gap-8">
+          <div className="flex flex-col gap-1 w-full md:w-1/2 order-2 md:order-1">
             <p className="text-[#7A7A7A] text-sm">
               Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas
               borrascas que nos suceden son señales de que presto ha de serenar el tiempo y han de
@@ -107,7 +140,7 @@ const Courses = ({ courses }: { courses: Courses }) => {
               <li className="flex gap-2">
                 <svg
                   aria-hidden="true"
-                  className="w-[14]"
+                  className="w-[14px]"
                   fill={'#224058'}
                   viewBox="0 0 576 512"
                   xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +152,7 @@ const Courses = ({ courses }: { courses: Courses }) => {
               <li className="flex gap-2">
                 <svg
                   aria-hidden="true"
-                  className="w-[14]"
+                  className="w-[14px]"
                   fill={'#224058'}
                   viewBox="0 0 576 512"
                   xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +164,7 @@ const Courses = ({ courses }: { courses: Courses }) => {
               <li className="flex gap-2">
                 <svg
                   aria-hidden="true"
-                  className="w-[14]"
+                  className="w-[14px]"
                   fill={'#224058'}
                   viewBox="0 0 576 512"
                   xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +176,7 @@ const Courses = ({ courses }: { courses: Courses }) => {
               <li className="flex gap-2">
                 <svg
                   aria-hidden="true"
-                  className="w-[14]"
+                  className="w-[14px]"
                   fill={'#224058'}
                   viewBox="0 0 576 512"
                   xmlns="http://www.w3.org/2000/svg"
@@ -160,13 +193,14 @@ const Courses = ({ courses }: { courses: Courses }) => {
               Infórmate
             </a>
           </div>
-          <div className="flex justify-center w-full">
+
+          <div className="flex justify-center w-full md:w-1/2 order-1 md:order-2">
             <Image
               src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/pack-1.jpg"
               width={600}
               height={500}
-              alt="Random image"
-              className="rounded-[5px] shadow-[0_0_10px_0_rgba(0,0,0,0.25)]"
+              alt="Pack image"
+              className="rounded-[5px] shadow-[0_0_10px_0_rgba(0,0,0,0.25)] w-full h-auto object-cover"
             />
           </div>
         </div>

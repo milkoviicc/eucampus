@@ -136,7 +136,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
             width={88}
             height={88}
             alt="Bg img"
-            className="w-[88px] h-[70px] lg:h-[88px] absolute -bottom-5 -right-12 opacity-[0.18]"
+            className="w-[88px] h-[70px] lg:h-[88px] absolute -bottom-5 -right-0 opacity-[0.18]"
           />
         </div>
       </div>
@@ -164,7 +164,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
             }
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-12 xl:px-4 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-4 xl:px-4 w-full">
             <div className="px-5 py-10 flex flex-col justify-center items-center text-center bg-[#E4F3F1] rounded-[10px] shadow-[0_4px_10px_0px_rgba(0,0,0,0.11)]">
               <FontAwesomeIcon icon={faClock} fontSize={50} className="pb-2" />
               <h3 className="text-[#222] text-2xl font-semibold">Conciliación</h3>
@@ -215,13 +215,13 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
           Combinamos explicaciones claras, materiales estructurados y práctica real para que
           aprendas de forma eficaz.
         </p>
-        <div className="flex justify-between items-center mt-12 px-12 xl:px-4">
+        <div className="flex justify-between items-center mt-12 px-4 xl:px-4">
           <h3 className="font-semibold text-3xl">Top cursos</h3>
           <Link href="/cursos" className="text-[#394c62] text-sm">
             Ver todo el catálogo
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-12 xl:px-4 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-4 xl:px-4 w-full">
           {courses.slice(0, 4).map((course, idx) => (
             <div
               key={idx}
@@ -248,7 +248,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
           <div className="flex flex-col justify-center items-center">
             <AnimatedHeading
               firstText="Porqué"
-              secondText={<span className="text-[30px] lg:text-[43px] text-accent">Elegirnos</span>}
+              secondText="Elegirnos"
               underlineOn="second"
               svg={
                 <svg
@@ -270,7 +270,7 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
               Una plataforma pensada para ayudarte a conseguir trabajo en la Unión Europea.
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-12 px-12 xl:px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-12 px-4 xl:px-4">
             {reasons.map((reason, index) => (
               <div className="flex gap-3 w-full" key={index}>
                 <FontAwesomeIcon icon={faCircleCheck} fontSize={32} className="text-accent" />
@@ -287,26 +287,28 @@ const LandingWrapper = ({ courses }: { courses: Course[] }) => {
       </div>
 
       {/* CERTIFICATES SECTION */}
-      <div className="max-w-[1300px] mx-auto py-20 flex flex-col px-12">
-        <AnimatedHeading
-          firstText="Confianza,"
-          secondText="transparencia, reconocimiento"
-          underlineOn="first"
-          svg={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute left-0 -bottom-3 w-full svg-animated"
-              viewBox="0 0 500 150"
-              stroke="#00A694"
-              strokeWidth={9}
-              fill="none"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <path d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"></path>
-            </svg>
-          }
-        />
+      <div className="max-w-[1300px] mx-auto py-20 flex flex-col">
+        <div className="px-4">
+          <AnimatedHeading
+            firstText="Confianza,"
+            secondText="transparencia, reconocimiento"
+            underlineOn="first"
+            svg={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute left-0 -bottom-3 w-full svg-animated"
+                viewBox="0 0 500 150"
+                stroke="#00A694"
+                strokeWidth={9}
+                fill="none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"></path>
+              </svg>
+            }
+          />
+        </div>
 
         <p className="text-center text-2xl font-semibold -mt-4">Certificados mediante</p>
 

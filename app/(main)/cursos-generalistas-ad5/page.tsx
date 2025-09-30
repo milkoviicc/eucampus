@@ -6,13 +6,17 @@ const GeneralistasAD5 = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="py-20 max-w-[1300px] 2xl:max-w-[1600px] mx-auto">
+      <div className="py-20 w-full md:max-w-[1300px] 2xl:max-w-[1600px] mx-auto px-4 lg:px-0">
         <div className="text-center font-semibold">
-          <h3 className="text-2xl">¿No es la opción adecuada para ti?</h3>
-          <h1 className="text-3xl">Explora nuestro Pack Generalistas AD5</h1>
+          <h3 className="text-lg md:text-2xl">¿No es la opción adecuada para ti?</h3>
+          <h1 className="text-2xl mt-2 md:text-3xl md:mt-0">
+            Explora nuestro Pack Generalistas AD5
+          </h1>
         </div>
-        <div className="flex pt-8">
-          <div className="flex flex-col gap-1 w-full">
+
+        {/* Responsive bottom section: image on top for small screens, image on right for md+ */}
+        <div className="flex flex-col md:flex-row md:items-center pt-8 gap-8">
+          <div className="flex flex-col gap-1 w-full md:w-1/2 order-2 md:order-1">
             <p className="text-[#7A7A7A] text-sm">
               Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas
               borrascas que nos suceden son señales de que presto ha de serenar el tiempo y han de
@@ -23,7 +27,7 @@ const GeneralistasAD5 = () => {
               <li className="flex gap-2">
                 <svg
                   aria-hidden="true"
-                  className="w-[14]"
+                  className="w-[14px]"
                   fill={'#224058'}
                   viewBox="0 0 576 512"
                   xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +39,7 @@ const GeneralistasAD5 = () => {
               <li className="flex gap-2">
                 <svg
                   aria-hidden="true"
-                  className="w-[14]"
+                  className="w-[14px]"
                   fill={'#224058'}
                   viewBox="0 0 576 512"
                   xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +51,7 @@ const GeneralistasAD5 = () => {
               <li className="flex gap-2">
                 <svg
                   aria-hidden="true"
-                  className="w-[14]"
+                  className="w-[14px]"
                   fill={'#224058'}
                   viewBox="0 0 576 512"
                   xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +63,7 @@ const GeneralistasAD5 = () => {
               <li className="flex gap-2">
                 <svg
                   aria-hidden="true"
-                  className="w-[14]"
+                  className="w-[14px]"
                   fill={'#224058'}
                   viewBox="0 0 576 512"
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,18 +75,19 @@ const GeneralistasAD5 = () => {
             </ul>
             <a
               href="#"
-              className="mt-4 bg-primary px-[24px] py-[10px] w-fit text-white text-[15px] font-semibold rounded-[3px]"
+              className="mt-4 bg-primary px-[24px] py-[10px] w-fit text-white text-[15px] font-semibold rounded-[3px] hover:bg-accent transition duration-300"
             >
               Infórmate
             </a>
           </div>
-          <div className="flex justify-center w-full">
+
+          <div className="flex justify-center w-full md:w-1/2 order-1 md:order-2">
             <Image
               src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/pack-1.jpg"
               width={600}
               height={500}
-              alt="Random image"
-              className="rounded-[5px] shadow-[0_0_10px_0_rgba(0,0,0,0.25)]"
+              alt="Pack image"
+              className="rounded-[5px] shadow-[0_0_10px_0_rgba(0,0,0,0.25)] w-full h-auto object-cover"
             />
           </div>
         </div>

@@ -119,7 +119,7 @@ const Login = () => {
 
   return (
     <div className="w-full h-screen flex justify-center items-center bg-[#fafafa]">
-      <div className="relative bg-white flex flex-col justify-center items-center text-center py-35 px-75">
+      <div className="relative bg-white flex flex-col justify-center items-center text-center py-35 px-4 md:px-35 lg:px-75">
         {currentView === 'Welcome' ? (
           <>
             <Link href="/" className="absolute top-5 right-5">

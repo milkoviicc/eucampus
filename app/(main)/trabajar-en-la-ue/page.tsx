@@ -84,10 +84,14 @@ const Trabajar = () => {
       ),
     },
   ]
+
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto pt-20" id="porque">
+      <div
+        className="w-full px-4 md:px-6 lg:px-0 lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto pt-20"
+        id="porque"
+      >
         <AnimatedHeading
           firstText="¿Por qué trabajar en la"
           secondText="Unión Europea?"
@@ -108,9 +112,10 @@ const Trabajar = () => {
           }
         />
 
-        <div className="py-10 flex justify-between gap-12">
-          <div className="flex flex-col gap-5 text-[#7A7A7A] text-justify text-sm w-1/2">
-            <h3 className="text-2xl text-primary font-semibold">
+        {/* Section: Why - stacked on small, side-by-side from md */}
+        <div className="py-10 flex flex-col md:flex-row md:justify-between md:items-start gap-6 md:gap-12">
+          <div className="flex flex-col gap-5 text-[#7A7A7A] text-justify text-sm w-full md:w-1/2">
+            <h3 className="text-lg lg:text-2xl text-primary font-semibold">
               Estabilidad y proyección profesional
             </h3>
             <p>
@@ -119,7 +124,7 @@ const Trabajar = () => {
               haces a través de un contrato temporal, se valora la continuidad y el crecimiento
               dentro de la institución.
             </p>
-            <h3 className="text-2xl text-primary font-semibold mt-2">
+            <h3 className="text-lg lg:text-2xl text-primary font-semibold mt-2">
               Condiciones laborales favorables
             </h3>
             <p>
@@ -155,22 +160,27 @@ const Trabajar = () => {
               directamente a millones de ciudadanos europeos.
             </p>
           </div>
-          <Image
-            src="https://marianos98.sg-host.com/wp-content/uploads/2020/07/Screenshot-2020-07-16-at-11.29.00-PM.png"
-            alt=""
-            width={500}
-            height={500}
-            className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-1/2 max-h-[670px]"
-          />
+
+          <div className="w-full md:w-1/2 flex-shrink-0">
+            <Image
+              src="https://marianos98.sg-host.com/wp-content/uploads/2020/07/Screenshot-2020-07-16-at-11.29.00-PM.png"
+              alt=""
+              width={500}
+              height={500}
+              className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-full h-auto max-h-[670px] object-cover"
+            />
+          </div>
         </div>
-        <div className="flex flex-col items-center py-15" id="tipos">
+
+        {/* Tipos section */}
+        <div className="flex flex-col items-center py-12" id="tipos">
           <AnimatedHeading
             firstText="Tipos de empleo"
             secondText="en la Unión Europea"
             underlineOn="first"
             svg={
               <svg
-                className="absolute left-0 -bottom-6 w-full h-auto"
+                className="absolute left-0 -bottom-3 lg:-bottom-6 w-full h-auto"
                 stroke="#00A694"
                 strokeWidth={5}
                 fill="none"
@@ -184,50 +194,60 @@ const Trabajar = () => {
             }
           />
 
-          <p className="text-[#7A7A7A] text-center text-sm w-[75%] mt-2">
+          <p className="text-[#7A7A7A] text-center text-sm max-w-3xl mt-2 px-2">
             Las instituciones de la UE ofrecen distintas formas de trabajar en función del tipo de
             contrato, la duración y las tareas a desempeñar. A continuación te explicamos las
             principales categorías:
           </p>
-          <div className="flex flex-col items-center w-full gap-10 mt-10">
-            <div className="grid grid-cols-3 gap-2 w-fit">
+
+          <div className="flex flex-col items-center w-full gap-2 lg:gap-10 mt-10 px-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 w-full justify-center">
               {/* Top row */}
               <button
-                className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 0 ? 'bg-accent' : 'bg-primary'}`}
+                type="button"
+                className={`w-full px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 0 ? 'bg-accent' : 'bg-primary'}`}
                 onClick={() => setEmploymentTab(0)}
               >
                 Funcionarios permanentes
               </button>
               <button
-                className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 1 ? 'bg-accent' : 'bg-primary'}`}
+                type="button"
+                className={`w-full px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 1 ? 'bg-accent' : 'bg-primary'}`}
                 onClick={() => setEmploymentTab(1)}
               >
                 Agentes contractuales (CAST)
               </button>
               <button
-                className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 2 ? 'bg-accent' : 'bg-primary'}`}
+                type="button"
+                className={`w-full px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 2 ? 'bg-accent' : 'bg-primary'}`}
                 onClick={() => setEmploymentTab(2)}
               >
                 Agentes temporales
               </button>
 
               {/* Bottom row centered */}
-              <div className="col-span-3 flex justify-center gap-2">
+            </div>
+
+            <div className="flex w-full justify-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-4xl lg:mt-2">
                 <button
-                  className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 3 ? 'bg-accent' : 'bg-primary'}`}
+                  type="button"
+                  className={`w-full px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 3 ? 'bg-accent' : 'bg-primary'}`}
                   onClick={() => setEmploymentTab(3)}
                 >
                   Expertos nacionales en comisión de servicios (SNEs)
                 </button>
                 <button
-                  className={`px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 4 ? 'bg-accent' : 'bg-primary'}`}
+                  type="button"
+                  className={`w-full px-[35px] py-[15px] text-sm rounded-t-[10px] text-white hover:bg-[#61CE70] transition duration-300 ${employmentTab === 4 ? 'bg-accent' : 'bg-primary'}`}
                   onClick={() => setEmploymentTab(4)}
                 >
                   Prácticas o traineeships
                 </button>
               </div>
             </div>
-            <div className="w-full">
+
+            <div className="w-full px-2 md:px-0 max-w-5xl">
               {employmentTab === 0 ? (
                 <div className="flex flex-col gap-3 text-[#7A7A7A]">
                   <p>
@@ -252,48 +272,59 @@ const Trabajar = () => {
                     reuniones y mantenimiento de bases de datos. Los grados van desde AST/SC 1 hasta
                     AST/SC 6. La entrada habitual es en AST/SC 1 o AST/SC 2.
                   </p>
-                  <table className="border-1 border-collapse mt-5">
-                    <thead>
-                      <tr className="text-left">
-                        <th>Categoria</th>
-                        <th>Funciones principales</th>
-                        <th>Grados de entrada</th>
-                        <th>Requisitos tipicos</th>
-                        <th>Evolución profesional</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="font-semibold px-2">Administradores (AD)</td>
-                        <td>
-                          Políticas, gestión de programas, análisis, legislación, relaciones
-                          exteriores
-                        </td>
-                        <td>AD 5</td>
-                        <td>Titulo universitario</td>
-                        <td>Hasta AD 16 (dirección)</td>
-                      </tr>
-                      <tr>
-                        <td className="font-semibold px-2">Asistentes (AST)</td>
-                        <td>
-                          Apoyo técnico y administrativo, preparación de documentos, gestión interna
-                        </td>
-                        <td>AST 1 o AST 3</td>
-                        <td>Titulo de secundaria + experiencia o formación técnica</td>
-                        <td>Hasta AST 11</td>
-                      </tr>
-                      <tr>
-                        <td className="font-semibold px-2">Secretarios/Oficinistas (AST/SC)</td>
-                        <td>
-                          Tareas administrativas de oficina, archivo, gestión de agendas, apoyo
-                          logístico
-                        </td>
-                        <td>AST/SC 1 o AST/SC 2</td>
-                        <td>Título de secundaria + experiencia administrativa</td>
-                        <td>Hasta AST/SC 6</td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+                  {/* responsive table wrapper */}
+                  <div className="overflow-x-auto mt-5">
+                    <table className="min-w-[720px] w-full table-auto border-collapse">
+                      <thead>
+                        <tr className="text-left">
+                          <th className="px-3 py-2">Categoria</th>
+                          <th className="px-3 py-2">Funciones principales</th>
+                          <th className="px-3 py-2">Grados de entrada</th>
+                          <th className="px-3 py-2">Requisitos tipicos</th>
+                          <th className="px-3 py-2">Evolución profesional</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="font-semibold px-3 py-2">Administradores (AD)</td>
+                          <td className="px-3 py-2">
+                            Políticas, gestión de programas, análisis, legislación, relaciones
+                            exteriores
+                          </td>
+                          <td className="px-3 py-2">AD 5</td>
+                          <td className="px-3 py-2">Titulo universitario</td>
+                          <td className="px-3 py-2">Hasta AD 16 (dirección)</td>
+                        </tr>
+                        <tr>
+                          <td className="font-semibold px-3 py-2">Asistentes (AST)</td>
+                          <td className="px-3 py-2">
+                            Apoyo técnico y administrativo, preparación de documentos, gestión
+                            interna
+                          </td>
+                          <td className="px-3 py-2">AST 1 o AST 3</td>
+                          <td className="px-3 py-2">
+                            Titulo de secundaria + experiencia o formación técnica
+                          </td>
+                          <td className="px-3 py-2">Hasta AST 11</td>
+                        </tr>
+                        <tr>
+                          <td className="font-semibold px-3 py-2">
+                            Secretarios/Oficinistas (AST/SC)
+                          </td>
+                          <td className="px-3 py-2">
+                            Tareas administrativas de oficina, archivo, gestión de agendas, apoyo
+                            logístico
+                          </td>
+                          <td className="px-3 py-2">AST/SC 1 o AST/SC 2</td>
+                          <td className="px-3 py-2">
+                            Título de secundaria + experiencia administrativa
+                          </td>
+                          <td className="px-3 py-2">Hasta AST/SC 6</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               ) : employmentTab === 1 ? (
                 <div className="flex flex-col gap-2 text-sm text-[#7A7A7A]">
@@ -346,65 +377,84 @@ const Trabajar = () => {
                   </p>
                   <p>Duración habitual: 5 a 6 meses.</p>
                   <p>Se valoran idiomas, motivación y formación universitaria.</p>
-                  <table className="border-1 border-collapse mt-5">
-                    <thead>
-                      <tr className="text-left">
-                        <th>Tipo de empleo</th>
-                        <th>Acceso</th>
-                        <th>Duración del contrato</th>
-                        <th>Estabilidad</th>
-                        <th>Remuneración</th>
-                        <th>¿Requiere pruebas EPSO?</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="font-semibold px-2">Funcionario permanente</td>
-                        <td>Oposición EPSO (convocatoria formal y pruebas)</td>
-                        <td>Indefinido (tras periodo de prueba)</td>
-                        <td>Alta</td>
-                        <td>Alta (según escalas AD/AST)</td>
-                        <td>Sí</td>
-                      </tr>
-                      <tr>
-                        <td className="font-semibold px-2">Agente contractual (CAST)</td>
-                        <td>Inscripción en base de datos + selección por la institución</td>
-                        <td>Variable (renovable, a veces indefinido)</td>
-                        <td>Media</td>
-                        <td>Buena (según grado y funciones)</td>
-                        <td>No (salvo pruebas internas del CAST)</td>
-                      </tr>
-                      <tr>
-                        <td className="font-semibold px-2">Agente temporal</td>
-                        <td>Selección directa por la institución o agencia</td>
-                        <td>Normalmente de 2 a 6 años</td>
-                        <td>Media o baja</td>
-                        <td>Buena (en perfiles técnicos o especializados)</td>
-                        <td>No</td>
-                      </tr>
-                      <tr>
-                        <td className="font-semibold px-2">Prácticas (Traineeships)</td>
-                        <td>Solicitud directa en el programa correspondiente</td>
-                        <td>5 a 6 meses (ocasionalmente ampliable)</td>
-                        <td>Temporal, formativa</td>
-                        <td>Remuneración fija mensual (varía según institución)</td>
-                        <td>No (se valoran criterios académicos y motivación)</td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+                  <div className="overflow-x-auto mt-5">
+                    <table className="min-w-[800px] w-full table-auto border-collapse">
+                      <thead>
+                        <tr className="text-left">
+                          <th className="px-3 py-2">Tipo de empleo</th>
+                          <th className="px-3 py-2">Acceso</th>
+                          <th className="px-3 py-2">Duración del contrato</th>
+                          <th className="px-3 py-2">Estabilidad</th>
+                          <th className="px-3 py-2">Remuneración</th>
+                          <th className="px-3 py-2">¿Requiere pruebas EPSO?</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="font-semibold px-3 py-2">Funcionario permanente</td>
+                          <td className="px-3 py-2">
+                            Oposición EPSO (convocatoria formal y pruebas)
+                          </td>
+                          <td className="px-3 py-2">Indefinido (tras periodo de prueba)</td>
+                          <td className="px-3 py-2">Alta</td>
+                          <td className="px-3 py-2">Alta (según escalas AD/AST)</td>
+                          <td className="px-3 py-2">Sí</td>
+                        </tr>
+                        <tr>
+                          <td className="font-semibold px-3 py-2">Agente contractual (CAST)</td>
+                          <td className="px-3 py-2">
+                            Inscripción en base de datos + selección por la institución
+                          </td>
+                          <td className="px-3 py-2">Variable (renovable, a veces indefinido)</td>
+                          <td className="px-3 py-2">Media</td>
+                          <td className="px-3 py-2">Buena (según grado y funciones)</td>
+                          <td className="px-3 py-2">No (salvo pruebas internas del CAST)</td>
+                        </tr>
+                        <tr>
+                          <td className="font-semibold px-3 py-2">Agente temporal</td>
+                          <td className="px-3 py-2">
+                            Selección directa por la institución o agencia
+                          </td>
+                          <td className="px-3 py-2">Normalmente de 2 a 6 años</td>
+                          <td className="px-3 py-2">Media o baja</td>
+                          <td className="px-3 py-2">
+                            Buena (en perfiles técnicos o especializados)
+                          </td>
+                          <td className="px-3 py-2">No</td>
+                        </tr>
+                        <tr>
+                          <td className="font-semibold px-3 py-2">Prácticas (Traineeships)</td>
+                          <td className="px-3 py-2">
+                            Solicitud directa en el programa correspondiente
+                          </td>
+                          <td className="px-3 py-2">5 a 6 meses (ocasionalmente ampliable)</td>
+                          <td className="px-3 py-2">Temporal, formativa</td>
+                          <td className="px-3 py-2">
+                            Remuneración fija mensual (varía según institución)
+                          </td>
+                          <td className="px-3 py-2">
+                            No (se valoran criterios académicos y motivación)
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               )}
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-10 py-15" id="requisitos">
+
+        {/* Requisitos section - stacked under md */}
+        <div className="flex flex-col gap-10 py-10" id="requisitos">
           <AnimatedHeading
-            firstText={<span className="text-accent leading-[2]">Requisitos generales</span>}
+            firstText="Requisitos generales"
             secondText="para trabajar en la Unión Europea"
             underlineOn="first"
             svg={
               <svg
-                className="absolute left-0 -bottom-3 w-full h-auto svg-animated"
+                className="absolute left-0 -bottom-4 lg:-bottom-6 w-full h-auto svg-animated"
                 stroke="#00A694"
                 strokeWidth={5}
                 fill="none"
@@ -418,8 +468,8 @@ const Trabajar = () => {
             }
           />
 
-          <div className="flex justify-between gap-10">
-            <div className="flex flex-col gap-2 text-[#7A7A7A] text-justify text-sm w-1/2">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+            <div className="flex flex-col gap-2 text-[#7A7A7A] text-justify text-sm w-full md:w-1/2">
               <p>
                 Para trabajar en las instituciones europeas, existen una serie de requisitos comunes
                 a la mayoría de procesos, tanto si hablamos de oposiciones como de contratos
@@ -464,15 +514,20 @@ const Trabajar = () => {
                 </p>
               </div>
             </div>
-            <Image
-              src="https://marianos98.sg-host.com/wp-content/uploads/2025/06/eu-4.png"
-              alt=""
-              width={500}
-              height={500}
-              className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-1/2"
-            />
+
+            <div className="w-full md:w-1/2 flex-shrink-0">
+              <Image
+                src="https://marianos98.sg-host.com/wp-content/uploads/2025/06/eu-4.png"
+                alt=""
+                width={500}
+                height={500}
+                className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-full h-auto object-cover"
+              />
+            </div>
           </div>
-          <div className="py-20 flex flex-col gap-2 justify-center items-center" id="proceso">
+
+          {/* Proceso - stacked on small */}
+          <div className="py-12 flex flex-col items-center" id="proceso">
             <AnimatedHeading
               firstText="Cómo es el"
               secondText="proceso de selección"
@@ -493,20 +548,24 @@ const Trabajar = () => {
               }
             />
 
-            <p className="text-sm text-[#7A7A7A] text-center w-[70%]">
+            <p className="text-sm text-[#7A7A7A] text-center max-w-3xl px-2">
               EPSO ha implementado un nuevo modelo de selección más ágil y centrado en competencias,
               eliminando las pruebas orales y el Assessment Centre. El proceso se realiza
               completamente en línea y se completa en una única sesión de pruebas.
             </p>
-            <div className="flex gap-10 mt-10">
-              <Image
-                src="https://marianos98.sg-host.com/wp-content/uploads/2020/07/course2.png"
-                alt=""
-                width={500}
-                height={500}
-                className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-1/2 h-full"
-              />
-              <div className="flex flex-col gap-4 w-1/2">
+
+            <div className="flex flex-col md:flex-row gap-8 mt-10 w-full max-w-5xl px-2">
+              <div className="w-full md:w-1/2">
+                <Image
+                  src="https://marianos98.sg-host.com/wp-content/uploads/2020/07/course2.png"
+                  alt=""
+                  width={500}
+                  height={500}
+                  className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-full h-auto object-cover"
+                />
+              </div>
+
+              <div className="w-full md:w-1/2 flex flex-col gap-4">
                 {selectionProcess.map((step, idx) => (
                   <div
                     key={idx}
@@ -551,7 +610,9 @@ const Trabajar = () => {
             </div>
           </div>
         </div>
-        <div className="py-20 flex flex-col items-center" id="ofertas">
+
+        {/* Ofertas section - stacked on small */}
+        <div className="py-12 flex flex-col items-center" id="ofertas">
           <AnimatedHeading
             firstText="¿Dónde buscar las"
             secondText="ofertas de empleo"
@@ -572,12 +633,13 @@ const Trabajar = () => {
             }
           />
 
-          <p className="text-[#7A7A7A] text-sm">
+          <p className="text-[#7A7A7A] text-sm text-center max-w-3xl px-2">
             Hay varias formas de encontrar oportunidades de trabajo en las instituciones europeas,
             dependiendo del tipo de contrato o institución.
           </p>
-          <div className="flex justify-between gap-10 text-[#7A7A7A] text-sm mt-20">
-            <div className="w-1/2 flex flex-col gap-2">
+
+          <div className="flex flex-col md:flex-row md:justify-between gap-6 text-[#7A7A7A] text-sm mt-8 w-full max-w-5xl px-2">
+            <div className="w-full md:w-1/2 flex flex-col gap-4">
               <h3 className="text-primary text-xl font-medium">
                 EPSO – Oficina Europea de Selección de Personal
               </h3>
@@ -586,7 +648,8 @@ const Trabajar = () => {
                 Aquí se publican las convocatorias de funcionarios (AD, AST, AST/SC), CAST
                 Permanente y otras competiciones específicas.
               </p>
-              <div className="flex flex-col gap-2 mt-10">
+
+              <div className="flex flex-col gap-2 mt-4">
                 <h3 className="text-primary text-xl font-medium">
                   Páginas de empleo de cada institución o agencia
                 </h3>
@@ -597,29 +660,29 @@ const Trabajar = () => {
                 <p>Comisión Europea</p>
                 <p>Parlamento Europeo</p>
                 <p>Consejo de la UE</p>
-                <p>
-                  Agencias descentralizadas como EMA (medicamentos), FRONTEX (fronteras), EASA
-                  (aviación), etc.
-                </p>
-                <p>
-                  Puedes encontrarlas en
-                  <a href="https://europa.eu/european-union/about-eu/agencies" target="_blank">
-                    https://europa.eu/european-union/about-eu/agencies
+                <p>Agencias descentralizadas como EMA, FRONTEX, EASA, etc.</p>
+                <p className="break-words">
+                  Puedes encontrarlas en{' '}
+                  <a
+                    href="https://europa.eu/european-union/about-eu/agencies"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline"
+                  >
+                    europa.eu/european-union/about-eu/agencies
                   </a>
                 </p>
               </div>
-              <div className="flex flex-col gap-2 mt-10">
+
+              <div className="flex flex-col gap-2 mt-6">
                 <h3 className="text-primary text-xl font-medium">Plataformas adicionales</h3>
-                <p>
-                  Además de EPSO, existen otros portales que publican trabajos relacionados con la
-                  UE, sobre todo para expertos, becas o consultorías:
-                </p>
                 <p>Jobs in Brussels – empleos en instituciones y ONG vinculadas a la UE.</p>
                 <p>EURAXESS – oportunidades para investigadores y científicos.</p>
                 <p>LinkedIn – muchas agencias e instituciones europeas publican aquí ofertas.</p>
                 <p>Euractiv Jobs – especializado en empleo europeo, sobre todo en Bruselas.</p>
               </div>
-              <div className="flex flex-col gap-2 mt-10">
+
+              <div className="flex flex-col gap-2 mt-6">
                 <h3 className="text-primary text-xl font-medium">Suscripción a alertas</h3>
                 <p>
                   EPSO y muchas instituciones permiten suscribirse a alertas por email para no
@@ -627,17 +690,20 @@ const Trabajar = () => {
                 </p>
                 <p>
                   <strong>Consejo</strong>: crea una cuenta en EPSO aunque aún no vayas a
-                  presentarte, así puedes seguir las novedades y recibir alertas de con
+                  presentarte, así puedes seguir las novedades y recibir alertas.
                 </p>
               </div>
             </div>
-            <Image
-              src="https://marianos98.sg-host.com/wp-content/uploads/2025/06/eu-3.png"
-              alt=""
-              width={500}
-              height={500}
-              className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-1/2 h-full"
-            />
+
+            <div className="w-full md:w-1/2 flex-shrink-0">
+              <Image
+                src="https://marianos98.sg-host.com/wp-content/uploads/2025/06/eu-3.png"
+                alt=""
+                width={500}
+                height={500}
+                className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-tl-[50px] rounded-br-[50px] w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>

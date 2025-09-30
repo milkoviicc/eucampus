@@ -67,13 +67,13 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
             <h2 className="text-accent w-fit">{firstText}</h2>
             {svgWithRef}
           </div>
-          <h2>{secondText}</h2>
+          <h2 className="mt-2 sm:mt-0">{secondText}</h2>
         </>
       ) : (
         <>
           <h2>{firstText}</h2>
-          <div className="relative inline-block">
-            <h2 className="text-accent">{secondText}</h2>
+          <div className="relative inline-block w-fit mx-auto sm:mx-0">
+            <h2 className="text-accent w-fit">{secondText}</h2>
             {svgWithRef}
           </div>
         </>

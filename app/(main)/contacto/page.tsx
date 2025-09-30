@@ -55,10 +55,10 @@ const Contacto = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto py-20 h-full">
+      <div className="w-full px-4 lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto py-20 h-full">
         <div className="text-center">
           <h4 className="text-lg">Apoyo cuando lo necesites</h4>
-          <h1 className="text-5xl my-4">Estamos aquí para ayudarte.</h1>
+          <h1 className="text-4xl md:text-5xl my-4">Estamos aquí para ayudarte.</h1>
           <div className="py-4">
             <a href="mailto:info@eucampus.com" className="text-accent text-xl">
               <FontAwesomeIcon icon={faEnvelope} className="text-primary" size="lg" />{' '}
@@ -66,8 +66,15 @@ const Contacto = () => {
             </a>
           </div>
         </div>
-        <form action={sendMail} method="POST" className="flex flex-col gap-4">
-          <div className="flex flex-col gap-1">
+
+        {/* responsive form: grid on md, stacked on mobile */}
+        <form
+          action={sendMail}
+          method="POST"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8"
+        >
+          {/* Nombre - spans full width on md */}
+          <div className="flex flex-col gap-1 md:col-span-2">
             <label htmlFor="nombre" className="text-sm">
               Nombre
             </label>
@@ -78,44 +85,48 @@ const Contacto = () => {
               placeholder="Nombre"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="border-1 border-[#69727d] w-full text-[#222] rounded-r-[5px] rounded-l-[5px] p-[5px]"
+              className="border border-[#69727d] w-full text-[#222] rounded-[5px] p-3"
               required
             />
           </div>
-          <div className="flex gap-8">
-            <div className="flex flex-col gap-1 w-full">
-              <label htmlFor="correo-electrónico" className="text-sm">
-                Correo electrónico
-              </label>
-              <input
-                type="email"
-                name="correo-electrónico"
-                id="correo-electrónico"
-                value={email}
-                placeholder="Correo electrónico"
-                onChange={(e) => setEmail(e.target.value)}
-                className="border-1 border-[#69727d] w-full text-[#222] rounded-r-[5px] rounded-l-[5px] p-[5px]"
-                required
-              />
-            </div>
-            <div className="flex flex-col gap-1 w-full">
-              <label htmlFor="teléfono" className="text-sm">
-                Teléfono
-              </label>
-              <input
-                type="tel"
-                name="teléfono"
-                id="teléfono"
-                value={phone}
-                onChange={handlePhoneChange}
-                placeholder="+1-000-000-000"
-                title="Please enter a phone number in the format +1-111-111-111"
-                className="border-1 border-[#69727d] w-full text-[#222] rounded-r-[5px] rounded-l-[5px] p-[5px]"
-                required
-              />
-            </div>
+
+          {/* Email */}
+          <div className="flex flex-col gap-1 w-full">
+            <label htmlFor="correo-electrónico" className="text-sm">
+              Correo electrónico
+            </label>
+            <input
+              type="email"
+              name="correo-electrónico"
+              id="correo-electrónico"
+              value={email}
+              placeholder="Correo electrónico"
+              onChange={(e) => setEmail(e.target.value)}
+              className="border border-[#69727d] w-full text-[#222] rounded-[5px] p-3"
+              required
+            />
           </div>
-          <div>
+
+          {/* Teléfono */}
+          <div className="flex flex-col gap-1 w-full">
+            <label htmlFor="teléfono" className="text-sm">
+              Teléfono
+            </label>
+            <input
+              type="tel"
+              name="teléfono"
+              id="teléfono"
+              value={phone}
+              onChange={handlePhoneChange}
+              placeholder="+1-000-000-000"
+              title="Please enter a phone number in the format +1-111-111-111"
+              className="border border-[#69727d] w-full text-[#222] rounded-[5px] p-3"
+              required
+            />
+          </div>
+
+          {/* Mensaje - spans full width */}
+          <div className="flex flex-col gap-1 md:col-span-2">
             <label htmlFor="mensaje" className="text-sm">
               Mensaje
             </label>
@@ -123,19 +134,22 @@ const Contacto = () => {
               name="mensaje"
               id="mensaje"
               placeholder="Mensaje"
-              rows={4}
+              rows={5}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="border-1 border-[#69727d] w-full text-[#222] rounded-r-[5px] rounded-l-[5px] p-[5px]"
+              className="border border-[#69727d] w-full text-[#222] rounded-[5px] p-3 resize-none"
               required
             ></textarea>
           </div>
-          <input
-            type="submit"
-            value="Enviar"
-            className="bg-accent text-white px-6 w-1/3 py-2 rounded-[3px] hover:bg-primary cursor-pointer transition duration-300"
-            required
-          />
+
+          {/* Submit button centered; full width on mobile, constrained on md+ */}
+          <div className="md:col-span-2 flex justify-center">
+            <input
+              type="submit"
+              value="Enviar"
+              className="bg-accent text-white px-6 w-full md:w-1/3 py-2 rounded-[3px] hover:bg-primary cursor-pointer transition duration-300"
+            />
+          </div>
         </form>
       </div>
     </div>

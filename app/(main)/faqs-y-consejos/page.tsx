@@ -304,7 +304,7 @@ const Faqs = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
-      <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col py-20">
+      <div className="w-full lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col py-20">
         <AnimatedHeading
           firstText="Consejos prácticos"
           secondText="para los candidatos"
@@ -318,7 +318,7 @@ const Faqs = () => {
               fill="none"
               preserveAspectRatio="none"
               aria-hidden="true"
-              className="absolute left-0 -bottom-5 w-full"
+              className="absolute left-0 -bottom-3 lg:-bottom-5 w-full"
             >
               <path d="M3,146.1c17.1-8.8,33.5-17.8,51.4-17.8c15.6,0,17.1,18.1,30.2,18.1c22.9,0,36-18.6,53.9-18.6 c17.1,0,21.3,18.5,37.5,18.5c21.3,0,31.8-18.6,49-18.6c22.1,0,18.8,18.8,36.8,18.8c18.8,0,37.5-18.6,49-18.6c20.4,0,17.1,19,36.8,19 c22.9,0,36.8-20.6,54.7-18.6c17.7,1.4,7.1,19.5,33.5,18.8c17.1,0,47.2-6.5,61.1-15.6"></path>
             </svg>
@@ -347,8 +347,8 @@ const Faqs = () => {
             }
           />
 
-          <div className="flex gap-4 mt-5">
-            <div className="flex flex-col gap-2 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-5 px-4">
+            <div className="flex flex-col gap-8 lg:gap-2 w-full">
               {faq1.map((faq, idx) => (
                 <div
                   key={idx}
@@ -383,7 +383,7 @@ const Faqs = () => {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col gap-2 w-full">
+            <div className="flex flex-col gap-8 lg:gap-2 w-full">
               {faq2.map((faq, idx) => (
                 <div
                   key={idx}
