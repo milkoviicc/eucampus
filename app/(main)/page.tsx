@@ -26,6 +26,30 @@ export default function Home() {
 
   const courses = [
     {
+      courseTitle: 'Conocimientos UE (Ultimate Pack 480)',
+      courseType: 'Entrenamiento',
+      courseDescription:
+        'Entrenamiento 100% práctico con preguntas tipo test que replican la prueba EPSO de Competencias Digitales. Simulacros cronometrados, soluciones explicadas y dificultad progresiva para afinar...',
+      courseLink: '#',
+      courseTypeLink: '#',
+    },
+    {
+      courseTitle: 'Conocimientos UE (Starter Pack 120)',
+      courseType: 'Entrenamiento',
+      courseDescription:
+        'Entrenamiento 100% práctico con preguntas tipo test que replican la prueba EPSO de Competencias Digitales. Simulacros cronometrados, soluciones explicadas y dificultad progresiva para afinar...',
+      courseLink: '#',
+      courseTypeLink: '#',
+    },
+    {
+      courseTitle: 'Conocimientos UE (Advanced Pack 240)',
+      courseType: 'Entrenamiento',
+      courseDescription:
+        'Entrenamiento 100% práctico con preguntas tipo test que replican la prueba EPSO de Competencias Digitales. Simulacros cronometrados, soluciones explicadas y dificultad progresiva para afinar...',
+      courseLink: '#',
+      courseTypeLink: '#',
+    },
+    {
       courseTitle: 'Competencias Digitales (Ultimate Pack 300)',
       courseType: 'Entrenamiento',
       courseDescription:

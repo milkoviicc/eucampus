@@ -27,13 +27,19 @@ const Breadcrumb = () => {
           <p>{splitPath}</p>
         </div>
         <h3 className="capitalize text-2xl lg:text-4xl font-semibold text-white">
-          {splitPath.endsWith('ue')
+          {splitPath.endsWith('la ue')
             ? splitPath.slice(0, -2) + 'UE'
             : splitPath.endsWith('ad5')
               ? splitPath.slice(0, -3) + 'AD5'
               : splitPath.endsWith('ast3')
                 ? splitPath.slice(0, -4) + '(AST3)'
-                : splitPath}
+                : splitPath.endsWith('razonamiento')
+                  ? splitPath.slice(0, -14) + ': Razonamiento'
+                  : splitPath.endsWith('conocimientos ue')
+                    ? splitPath.slice(0, -17) + ': Conocimientos UE'
+                    : splitPath.endsWith('digitales')
+                      ? splitPath.slice(0, -23) + ': Competencias Digitales'
+                      : splitPath}
         </h3>
       </div>
     </div>

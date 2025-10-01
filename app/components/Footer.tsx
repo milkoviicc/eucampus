@@ -169,7 +169,7 @@ const Footer = () => {
         <div className="mt-16 lg:mt-0 flex flex-col items-center">
           <div className="w-[160px]">
             <Image
-              src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/logo-web-pie.png"
+              src="https://eucampus.com/wp-content/uploads/2025/05/logo-web-hor.png"
               width={500}
               height={500}
               alt="EU Campus logo"

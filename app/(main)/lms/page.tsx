@@ -134,10 +134,11 @@ export default function LMSPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
-      <div className="flex pt-[60px]">
+      {/* <-- cambio principal: apilado en móviles, fila en lg+ --> */}
+      <div className="flex flex-col lg:flex-row pt-[60px]">
         {/* Left - dark sidebar */}
-        <aside className="w-52 bg-[#394C62] text-gray-100 min-h-screen sticky top-0">
-          <div className="pb-[20px] flex flex-col justify-between items-center h-full">
+        <aside className="w-full lg:w-52 bg-[#394C62] text-gray-100 lg:min-h-screen lg:sticky lg:top-0 mb-4 lg:mb-0">
+          <div className="pb-[20px] flex lg:flex-col justify-between items-center h-full">
             <nav className="px-4 mt-8 space-y-3 text-sm w-full h-full">
               <button
                 onClick={() => setActiveLeft('courses')}
@@ -170,10 +171,10 @@ export default function LMSPage() {
               </button>
             </nav>
 
-            <div className="flex flex-col justify-between h-fit gap-10">
+            <div className="flex flex-col justify-between w-full h-full lg:h-fit gap-5 lg:gap-10 -mt-6 lg:mt-0">
               <button
                 onClick={() => setActiveLeft('courses')}
-                className={`flex w-full items-center px-8 gap-1 rounded-l-full rounded-r-full transition`}
+                className={`flex w-full items-center px-2 lg:px-8 gap-1 rounded-l-full rounded-r-full transition`}
               >
                 <Moon />
                 Modo oscuro
@@ -183,7 +184,7 @@ export default function LMSPage() {
                   dispatch(logoutThunk())
                   router.push('/')
                 }}
-                className={`flex w-full items-center px-8 gap-1 rounded-l-full rounded-r-full transition`}
+                className={`flex w-full items-center px-2 lg:px-8 gap-1 rounded-l-full rounded-r-full transition`}
               >
                 <FontAwesomeIcon icon={faPowerOff} />
                 Cerrar sesión
@@ -194,7 +195,7 @@ export default function LMSPage() {
 
         {/* Middle - light navigation sidebar (render only when not in settings) */}
         {activeLeft !== 'settings' && (
-          <aside className="w-52 bg-[#f4f4ff] min-h-screen sticky top-0">
+          <aside className="w-full lg:w-52 bg-[#f4f4ff] lg:min-h-screen lg:sticky lg:top-0 mb-4 lg:mb-0">
             <div className="px-2 py-8">
               {activeLeft === 'courses' && (
                 <nav>
@@ -276,7 +277,7 @@ export default function LMSPage() {
         )}
 
         {/* Main content - switches depending on left selection */}
-        <main className="flex-1 p-8 bg-[#fafafa]">
+        <main className="flex-1 w-full p-8 bg-[#fafafa]">
           {activeLeft === 'courses' && (
             <CoursesMain
               filtered={filtered}
@@ -300,6 +301,8 @@ export default function LMSPage() {
     </div>
   )
 }
+
+/* ---------- el resto del archivo se mantiene igual ---------- */
 
 function CoursesMain({
   filtered,
@@ -325,50 +328,52 @@ function CoursesMain({
       <header className="mb-6 flex items-center justify-between">
         {activeTab === 'active' && (
           <div className="flex items-center justify-between gap-4 bg-white p-4 rounded-md w-full">
-            <div className="flex items-center justify-around gap-3 bg-white p-2 w-full">
-              <div className="relative">
+            <div className="flex flex-col lg:flex-row items-center justify-around gap-3 bg-white p-2 w-full">
+              <div className="relative w-full">
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder={activeTab === 'active' ? 'Search courses' : 'Search tests'}
-                  className="px-3 py-2 w-100 outline-none border-1 rounded border-[rgba(0,0,0,0.2)] text-[rgba(0,0,0,0.6)]"
+                  className="px-3 py-2 w-full lg:w-100 outline-none border-1 rounded border-[rgba(0,0,0,0.2)] text-[rgba(0,0,0,0.6)]"
                 />
                 <FontAwesomeIcon
                   icon={faMagnifyingGlass}
                   className="absolute top-1/2 right-2 transform -translate-y-1/2"
                 />
               </div>
-              <select
-                value={selectedCourse}
-                onChange={(e) => setSelectedCourse(e.target.value)}
-                className="px-3 py-2 border-1 rounded border-[rgba(0,0,0,0.2)] text-[rgba(0,0,0,0.6)]"
-              >
-                <option value="all">Seleccionar una fecha</option>
-                <option value="competencias-digitales">Competencias digitales</option>
-                <option value="conocimientos">Conocimientos UE</option>
-                <option value="entrenamiento">Entrenamiento</option>
-                <option value="generalistas">Generalistas AD5</option>
-                <option value="prubea-cast">Prueba CAST</option>
-                <option value="razonamiento">Razonamiento</option>
-              </select>
-              <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border-1 rounded border-[rgba(0,0,0,0.2)] text-[rgba(0,0,0,0.6)]"
-              >
-                <option value="all">Seleccione Estado del curso</option>
-                <option value="iniciar">Iniciar</option>
-                <option value="continuar">Continuar</option>
-                <option value="evaluacion">En Evaluación</option>
-                <option value="completado">Completado</option>
-              </select>
+              <div className="flex gap-3 w-full">
+                <select
+                  value={selectedCourse}
+                  onChange={(e) => setSelectedCourse(e.target.value)}
+                  className="px-3 py-2 w-full lg:w-fit border-1 rounded border-[rgba(0,0,0,0.2)] text-[rgba(0,0,0,0.6)]"
+                >
+                  <option value="all">Seleccionar una fecha</option>
+                  <option value="competencias-digitales">Competencias digitales</option>
+                  <option value="conocimientos">Conocimientos UE</option>
+                  <option value="entrenamiento">Entrenamiento</option>
+                  <option value="generalistas">Generalistas AD5</option>
+                  <option value="prubea-cast">Prueba CAST</option>
+                  <option value="razonamiento">Razonamiento</option>
+                </select>
+                <select
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value)}
+                  className="px-3 py-2 w-full lg:w-fit border-1 rounded border-[rgba(0,0,0,0.2)] text-[rgba(0,0,0,0.6)]"
+                >
+                  <option value="all">Seleccione Estado del curso</option>
+                  <option value="iniciar">Iniciar</option>
+                  <option value="continuar">Continuar</option>
+                  <option value="evaluacion">En Evaluación</option>
+                  <option value="completado">Completado</option>
+                </select>
+              </div>
             </div>
           </div>
         )}
 
         {(activeTab === 'tests' || activeTab === 'exercises') && (
-          <div className="flex items-center justify-between gap-3 bg-white p-4 rounded-md w-full">
-            <div className="relative">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 bg-white p-4 rounded-md w-full">
+            <div className="relative w-full">
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -383,7 +388,7 @@ function CoursesMain({
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 py-2 border-1 rounded border-[rgba(0,0,0,0.2)] text-[rgba(0,0,0,0.6)]"
+              className="px-3 py-2 w-full md:w-fit border-1 rounded border-[rgba(0,0,0,0.2)] text-[rgba(0,0,0,0.6)]"
             >
               <option value="all">Seleccione tipo de test</option>
               <option value="prueba1">Prueba 1</option>

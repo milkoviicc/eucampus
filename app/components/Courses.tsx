@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
-import Image from 'next/image'
 import Generalistas from './Generalistas'
 
 interface Course {

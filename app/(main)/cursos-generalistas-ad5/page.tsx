@@ -83,7 +83,7 @@ const GeneralistasAD5 = () => {
 
           <div className="flex justify-center w-full md:w-1/2 order-1 md:order-2">
             <Image
-              src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/pack-1.jpg"
+              src="https://eucampus.com/wp-content/uploads/2025/05/Generalistas-AD5-Course-1536x1024.jpg"
               width={600}
               height={500}
               alt="Pack image"

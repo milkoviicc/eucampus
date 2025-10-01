@@ -7,7 +7,7 @@ const Generalistas = () => {
   return (
     <div className="lg:pt-20">
       <div className="text-center font-semibold">
-        <h3 className="text-lg md:text-2xl">¿No es la opción adecuada para ti?</h3>
+        <h3 className="text-lg md:text-2xl">Preparación completa con método</h3>
         <h1 className="text-2xl mt-2 md:text-3xl md:mt-0">Explora nuestro Pack Generalistas AD5</h1>
       </div>
 

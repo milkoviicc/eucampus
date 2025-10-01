@@ -107,19 +107,19 @@ const Navbar = () => {
                 <div className="absolute pt-[10px] pb-[20px] px-5 top-full -left-10 bg-white shadow-lg border border-gray-200 w-max opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="py-2">
                     <Link
-                      href="#"
+                      href="/entrenamientos-razonamiento"
                       className="block px-4 py-2 text-lg text-accent hover:bg-gray-100 transition-colors"
                     >
                       <FontAwesomeIcon icon={faArrowRight} color="#000" /> Razonamiento
                     </Link>
                     <Link
-                      href="#"
+                      href="/entrenamientos-conocimientos-ue"
                       className="block px-4 py-2 text-lg text-accent hover:bg-gray-100 transition-colors"
                     >
                       <FontAwesomeIcon icon={faArrowRight} color="#000" /> Conocimiento UE
                     </Link>
                     <Link
-                      href="#"
+                      href="/entrenamientos-competencias-digitales"
                       className="block px-4 py-2 text-lg text-accent hover:bg-gray-100 transition-colors"
                     >
                       <FontAwesomeIcon icon={faArrowRight} color="#000" /> Competencias digitales
@@ -361,13 +361,25 @@ const Navbar = () => {
                 }`}
               >
                 <div className="ml-2">
-                  <Link href="#" onClick={() => setIsOpen(false)} className="block py-2">
+                  <Link
+                    href="/entrenamientos-razonamiento"
+                    onClick={() => setIsOpen(false)}
+                    className="block py-2"
+                  >
                     Razonamiento
                   </Link>
-                  <Link href="#" onClick={() => setIsOpen(false)} className="block py-2">
+                  <Link
+                    href="/entrenamientos-conocimientos-ue"
+                    onClick={() => setIsOpen(false)}
+                    className="block py-2"
+                  >
                     Conocimiento UE
                   </Link>
-                  <Link href="#" onClick={() => setIsOpen(false)} className="block py-2">
+                  <Link
+                    href="/entrenamientos-competencias-digitales"
+                    onClick={() => setIsOpen(false)}
+                    className="block py-2"
+                  >
                     Competencias digitales
                   </Link>
                 </div>
@@ -455,7 +467,7 @@ const Navbar = () => {
             <li className="pt-4 border-t mt-2">
               {user ? (
                 <div className="flex flex-col gap-2 items-start">
-                  <Link href="/perfil" onClick={() => setIsOpen(false)} className="block">
+                  <Link href="/lms?tab=cursos" onClick={() => setIsOpen(false)} className="block">
                     Mi cuenta
                   </Link>
                   <Link
