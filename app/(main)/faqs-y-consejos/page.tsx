@@ -3,6 +3,35 @@ import React, { useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
 import Stack from '../../components/Stack'
 import AnimatedHeading from '../../components/AnimatedHeading'
+import { motion, Variants } from 'framer-motion'
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+const stagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+}
+
+const card: Variants = {
+  hidden: { opacity: 0, y: 10, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+  },
+}
 
 const Faqs = () => {
   const [openFaq1Index, setOpenFaq1Index] = useState<number | null>(null)
@@ -305,28 +334,42 @@ const Faqs = () => {
     <div className="mt-[60px]">
       <Breadcrumb />
       <div className="w-full lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col py-20">
-        <AnimatedHeading
-          firstText="Consejos prácticos"
-          secondText="para los candidatos"
-          underlineOn="first" // the underline appears under the first text
-          svg={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 500 150"
-              stroke="#00A694"
-              strokeWidth={5}
-              fill="none"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-              className="absolute left-0 -bottom-3 lg:-bottom-5 w-full"
-            >
-              <path d="M3,146.1c17.1-8.8,33.5-17.8,51.4-17.8c15.6,0,17.1,18.1,30.2,18.1c22.9,0,36-18.6,53.9-18.6 c17.1,0,21.3,18.5,37.5,18.5c21.3,0,31.8-18.6,49-18.6c22.1,0,18.8,18.8,36.8,18.8c18.8,0,37.5-18.6,49-18.6c20.4,0,17.1,19,36.8,19 c22.9,0,36.8-20.6,54.7-18.6c17.7,1.4,7.1,19.5,33.5,18.8c17.1,0,47.2-6.5,61.1-15.6"></path>
-            </svg>
-          }
-        />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={fadeIn}
+        >
+          <AnimatedHeading
+            firstText="Consejos prácticos"
+            secondText="para los candidatos"
+            underlineOn="first" // the underline appears under the first text
+            svg={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 150"
+                stroke="#00A694"
+                strokeWidth={5}
+                fill="none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+                className="absolute left-0 -bottom-3 lg:-bottom-5 w-full"
+              >
+                <path d="M3,146.1c17.1-8.8,33.5-17.8,51.4-17.8c15.6,0,17.1,18.1,30.2,18.1c22.9,0,36-18.6,53.9-18.6 c17.1,0,21.3,18.5,37.5,18.5c21.3,0,31.8-18.6,49-18.6c22.1,0,18.8,18.8,36.8,18.8c18.8,0,37.5-18.6,49-18.6c20.4,0,17.1,19,36.8,19 c22.9,0,36.8-20.6,54.7-18.6c17.7,1.4,7.1,19.5,33.5,18.8c17.1,0,47.2-6.5,61.1-15.6"></path>
+              </svg>
+            }
+          />
+        </motion.div>
 
         <Stack />
-        <div className="mt-10 py-20">
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeIn}
+          className="mt-10 py-20"
+        >
           <AnimatedHeading
             firstText="Preguntas frecuentes"
             secondText="(FAQ)"
@@ -346,14 +389,20 @@ const Faqs = () => {
               </svg>
             }
           />
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-5 px-4">
-            <div className="flex flex-col gap-8 lg:gap-2 w-full">
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-5 px-4"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <motion.div className="flex flex-col gap-8 lg:gap-2 w-full" variants={stagger}>
               {faq1.map((faq, idx) => (
-                <div
+                <motion.div
                   key={idx}
                   className="p-[20px] cursor-pointer bg-white rounded-2xl shadow-xl overflow-hidden relative"
                   onClick={() => toggleFaq1(idx)}
+                  variants={card}
                 >
                   <p
                     className={`flex gap-2 font-semibold items-center ${openFaq1Index === idx ? 'text-accent' : 'text-primary'}`}
@@ -380,15 +429,17 @@ const Faqs = () => {
                   >
                     <div className="pb-2">{faq.answer}</div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
-            <div className="flex flex-col gap-8 lg:gap-2 w-full">
+            </motion.div>
+
+            <motion.div className="flex flex-col gap-8 lg:gap-2 w-full" variants={stagger}>
               {faq2.map((faq, idx) => (
-                <div
+                <motion.div
                   key={idx}
                   className="p-[20px] cursor-pointer bg-white rounded-2xl shadow-xl overflow-hidden relative"
                   onClick={() => toggleFaq2(idx)}
+                  variants={card}
                 >
                   <p
                     className={`flex gap-2 font-semibold items-center ${openFaq2Index === idx ? 'text-accent' : 'text-primary'}`}
@@ -415,11 +466,11 @@ const Faqs = () => {
                   >
                     <div className="pb-2">{faq.answer}</div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   )

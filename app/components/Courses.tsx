@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
 import Generalistas from './Generalistas'
+import { motion, Variants } from 'framer-motion'
 
 interface Course {
   courseTitle: string
@@ -14,12 +15,25 @@ interface Course {
 
 type Courses = Course[]
 
+const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
 const Courses = ({ courses }: { courses: Courses }) => {
   const [activeFilter, setActiveFilter] = useState('Todo')
   const filters = ['Todo', 'Entrenamiento', 'Prueba CAST', 'Generalistas AD5']
 
+  const displayedCourses =
+    activeFilter === 'Todo'
+      ? courses
+      : courses.filter((course) => course.courseType === activeFilter)
+
   return (
-    <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-4 py-20 px-4 xl:px-0">
+    <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-4 py-10 px-4 xl:px-0">
       <div className="w-full">
         {/* dropdown for small screens */}
         <div className="block lg:hidden mt-4">
@@ -43,7 +57,7 @@ const Courses = ({ courses }: { courses: Courses }) => {
 
             {/* simple chevron — optional, matches native select */}
             <svg
-              className="pointer-events-none absolute right-3 top-1/2 translate-y-[-50%] w-4 h-4 text-white"
+              className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
@@ -73,53 +87,37 @@ const Courses = ({ courses }: { courses: Courses }) => {
           ))}
         </div>
       </div>
+
+      {/* Courses grid with framer-motion animations */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-8">
-        {activeFilter === 'Todo'
-          ? courses.map((course, idx) => (
-              <div
-                key={`${activeFilter}-${idx}`} // Key includes filter for proper re-rendering
-                className="pl-4 py-[5px] bg-[#222] h-[280px] text-[#fff] shadow-[-6px_7px_1px_5px_#00A694] rounded-[10px] hover:shadow-[6px_7px_1px_5px_#00A694] transition-all duration-500 animate-fadeInUp"
-                style={{
-                  animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both`, // Staggered animation
-                }}
-              >
-                <a href={`${course.courseLink}`} className="block font-bold mt-[20px] text-lg pr-8">
-                  {course.courseTitle}
-                </a>
-                <a
-                  href={`${course.courseTypeLink}`}
-                  className="block w-fit bg-primary text-xs rounded-[18px] px-[10px] py-[5px] text-[#fff] my-2"
-                >
-                  <FontAwesomeIcon icon={faTag} fontSize={12} /> {course.courseType}
-                </a>
-                <p className="pb-3 pr-8 text-sm">{course.courseDescription}</p>
-              </div>
-            ))
-          : courses
-              .filter((course) => course.courseType === activeFilter)
-              .map((c, i) => (
-                <div
-                  key={`${activeFilter}-${i}`} // Key includes filter for proper re-rendering
-                  className="pl-4 py-[5px] bg-[#222] h-[280px] text-[#fff] shadow-[-6px_7px_1px_5px_#00A694] rounded-[10px] hover:shadow-[6px_7px_1px_5px_#00A694] transition-all duration-500 animate-fadeInUp"
-                  style={{
-                    animation: `fadeInUp 0.6s ease-out ${i * 0.1}s both`, // Staggered animation
-                  }}
-                >
-                  <a href={`${c.courseLink}`} className="block font-bold mt-[20px] text-lg pr-8">
-                    {c.courseTitle}
-                  </a>
-                  <a
-                    href={`${c.courseTypeLink}`}
-                    className="block w-fit bg-primary text-xs rounded-[18px] px-[10px] py-[5px] text-[#fff] my-2"
-                  >
-                    <FontAwesomeIcon icon={faTag} fontSize={12} /> {c.courseType}
-                  </a>
-                  <p className="pb-3 pr-8 text-sm">{c.courseDescription}</p>
-                </div>
-              ))}
+        {displayedCourses.map((course, idx) => (
+          <div
+            key={`${activeFilter}-${idx}`}
+            className="pl-4 py-[5px] bg-[#222] h-[280px] text-[#fff] shadow-[-6px_7px_1px_5px_#00A694] rounded-[10px] hover:shadow-[6px_7px_1px_5px_#00A694] transition-all duration-500 animate-fadeInUp"
+          >
+            <a href={`${course.courseLink}`} className="block font-bold mt-[20px] text-lg pr-8">
+              {course.courseTitle}
+            </a>
+            <a
+              href={`${course.courseTypeLink}`}
+              className="block w-fit bg-primary text-xs rounded-[18px] px-[10px] py-[5px] text-[#fff] my-2"
+            >
+              <FontAwesomeIcon icon={faTag} fontSize={12} /> {course.courseType}
+            </a>
+            <p className="pb-3 pr-8 text-sm">{course.courseDescription}</p>
+          </div>
+        ))}
       </div>
 
-      <Generalistas />
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeIn}
+        className="mt-8"
+      >
+        <Generalistas />
+      </motion.div>
     </div>
   )
 }

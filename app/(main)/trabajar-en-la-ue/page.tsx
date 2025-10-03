@@ -3,6 +3,16 @@ import React, { useState } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
 import Image from 'next/image'
 import AnimatedHeading from '../../components/AnimatedHeading'
+import { motion, Variants } from 'framer-motion'
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+}
 
 const Trabajar = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
@@ -92,88 +102,102 @@ const Trabajar = () => {
         className="w-full px-4 md:px-6 lg:px-0 lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto pt-20"
         id="porque"
       >
-        <AnimatedHeading
-          firstText="¿Por qué trabajar en la"
-          secondText="Unión Europea?"
-          underlineOn="second"
-          svg={
-            <svg
-              className="absolute left-0 -bottom-5 w-full h-auto"
-              stroke="#00A694"
-              strokeWidth={5}
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 500 150"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path>
-            </svg>
-          }
-        />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={fadeIn}
+        >
+          <AnimatedHeading
+            firstText="¿Por qué trabajar en la"
+            secondText="Unión Europea?"
+            underlineOn="second"
+            svg={
+              <svg
+                className="absolute left-0 -bottom-5 w-full h-auto"
+                stroke="#00A694"
+                strokeWidth={5}
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 150"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path d="M7.7,145.6C109,125,299.9,116.2,401,121.3c42.1,2.2,87.6,11.8,87.3,25.7"></path>
+              </svg>
+            }
+          />
 
-        {/* Section: Why - stacked on small, side-by-side from md */}
-        <div className="py-10 flex flex-col md:flex-row md:justify-between md:items-start gap-6 lg:gap-12">
-          <div className="flex flex-col gap-5 text-[#7A7A7A] text-justify text-sm w-full md:w-1/2">
-            <h3 className="text-lg lg:text-2xl text-primary font-semibold">
-              Estabilidad y proyección profesional
-            </h3>
-            <p>
-              Los empleos en la UE ofrecen contratos claros, previsibles y con posibilidades de
-              desarrollo a largo plazo. Tanto si accedes como funcionario permanente como si lo
-              haces a través de un contrato temporal, se valora la continuidad y el crecimiento
-              dentro de la institución.
-            </p>
-            <h3 className="text-lg lg:text-2xl text-primary font-semibold mt-2">
-              Condiciones laborales favorables
-            </h3>
-            <p>
-              Uno de los principales atractivos de trabajar en la UE son sus condiciones laborales.
-              Estas son algunas de las ventajas que marcan la diferencia:
-            </p>
-            <p>
-              <strong>Salarios competitivos</strong>: ajustados al coste de vida del país de destino
-              y con aumentos automáticos según antigüedad y nivel.
-            </p>
-            <p>
-              <strong>Equilibrio entre vida personal y trabajo</strong>: horarios flexibles,
-              posibilidad de teletrabajo y generosos periodos vacacionales.
-            </p>
-            <p>
-              <strong>Seguridad social completa</strong>: cobertura médica y de pensiones sólida,
-              incluso si trabajas desde otro Estado miembro.
-            </p>
-            <p>
-              <strong>Ayudas familiares y de integración</strong>: apoyo económico por hijos,
-              escolarización, reubicación o expatriación.
-            </p>
-            <p>
-              <strong>Ambiente multicultural</strong>: trabajar con personas de todos los países de
-              la UE fomenta la cooperación, el respeto y el aprendizaje constante.
-            </p>
-            <p>
-              <strong>Sentido de propósito</strong>
-            </p>
-            <p>
-              Además de las condiciones laborales, muchas personas valoran el impacto de su trabajo.
-              Formar parte de la UE significa contribuir al desarrollo de políticas que afectan
-              directamente a millones de ciudadanos europeos.
-            </p>
-          </div>
+          {/* Section: Why - stacked on small, side-by-side from md */}
+          <div className="py-10 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6 lg:gap-12">
+            <div className="flex flex-col gap-5 text-[#7A7A7A] text-justify text-sm w-full lg:w-1/2">
+              <h3 className="text-lg lg:text-2xl text-primary font-semibold">
+                Estabilidad y proyección profesional
+              </h3>
+              <p>
+                Los empleos en la UE ofrecen contratos claros, previsibles y con posibilidades de
+                desarrollo a largo plazo. Tanto si accedes como funcionario permanente como si lo
+                haces a través de un contrato temporal, se valora la continuidad y el crecimiento
+                dentro de la institución.
+              </p>
+              <h3 className="text-lg lg:text-2xl text-primary font-semibold mt-2">
+                Condiciones laborales favorables
+              </h3>
+              <p>
+                Uno de los principales atractivos de trabajar en la UE son sus condiciones
+                laborales. Estas son algunas de las ventajas que marcan la diferencia:
+              </p>
+              <p>
+                <strong>Salarios competitivos</strong>: ajustados al coste de vida del país de
+                destino y con aumentos automáticos según antigüedad y nivel.
+              </p>
+              <p>
+                <strong>Equilibrio entre vida personal y trabajo</strong>: horarios flexibles,
+                posibilidad de teletrabajo y generosos periodos vacacionales.
+              </p>
+              <p>
+                <strong>Seguridad social completa</strong>: cobertura médica y de pensiones sólida,
+                incluso si trabajas desde otro Estado miembro.
+              </p>
+              <p>
+                <strong>Ayudas familiares y de integración</strong>: apoyo económico por hijos,
+                escolarización, reubicación o expatriación.
+              </p>
+              <p>
+                <strong>Ambiente multicultural</strong>: trabajar con personas de todos los países
+                de la UE fomenta la cooperación, el respeto y el aprendizaje constante.
+              </p>
+              <p>
+                <strong>Sentido de propósito</strong>
+              </p>
+              <p>
+                Además de las condiciones laborales, muchas personas valoran el impacto de su
+                trabajo. Formar parte de la UE significa contribuir al desarrollo de políticas que
+                afectan directamente a millones de ciudadanos europeos.
+              </p>
+            </div>
 
-          <div className="w-full md:w-1/2 flex-shrink-0">
-            <Image
-              src="https://eucampus.com/wp-content/uploads/2025/09/empresaria-joven-feliz-que-sostiene-el-diario-que-mira-la-camara-en-el-lugar-de-trabajo-1025x1536.jpg"
-              alt=""
-              width={500}
-              height={500}
-              className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-[10px] w-full h-auto max-h-[670px] object-top object-cover"
-            />
+            <div className="w-full lg:w-1/2 flex-shrink-0">
+              <Image
+                src="https://eucampus.com/wp-content/uploads/2025/09/empresaria-joven-feliz-que-sostiene-el-diario-que-mira-la-camara-en-el-lugar-de-trabajo-1025x1536.jpg"
+                alt=""
+                width={500}
+                height={500}
+                className="shadow-[3px_6px_10px_0_rgba(0,0,0,0.26)] rounded-[10px] w-full h-auto max-h-[670px] object-top object-cover"
+              />
+            </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Tipos section */}
-        <div className="flex flex-col items-center py-12" id="tipos">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={fadeIn}
+          className="flex flex-col items-center py-12"
+          id="tipos"
+        >
           <AnimatedHeading
             firstText="Tipos de empleo"
             secondText="en la Unión Europea"
@@ -201,7 +225,7 @@ const Trabajar = () => {
           </p>
 
           <div className="flex flex-col items-center w-full gap-2 lg:gap-10 mt-10 px-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 w-full justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 w-full justify-center">
               {/* Top row */}
               <button
                 type="button"
@@ -444,10 +468,17 @@ const Trabajar = () => {
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Requisitos section - stacked under md */}
-        <div className="flex flex-col gap-10 py-10" id="requisitos">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeIn}
+          className="flex flex-col gap-10 py-10"
+          id="requisitos"
+        >
           <AnimatedHeading
             firstText="Requisitos generales"
             secondText="para trabajar en la Unión Europea"
@@ -468,8 +499,8 @@ const Trabajar = () => {
             }
           />
 
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
-            <div className="flex flex-col gap-2 text-[#7A7A7A] text-justify text-sm w-full md:w-1/2">
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6">
+            <div className="flex flex-col gap-2 text-[#7A7A7A] text-justify text-sm w-full lg:w-1/2">
               <p>
                 Para trabajar en las instituciones europeas, existen una serie de requisitos comunes
                 a la mayoría de procesos, tanto si hablamos de oposiciones como de contratos
@@ -515,7 +546,7 @@ const Trabajar = () => {
               </div>
             </div>
 
-            <div className="w-full md:w-1/2 flex-shrink-0">
+            <div className="w-full lg:w-1/2 flex-shrink-0">
               <Image
                 src="https://eucampus.com/wp-content/uploads/2025/09/trabajo-1152x1536.jpg"
                 alt=""
@@ -527,7 +558,14 @@ const Trabajar = () => {
           </div>
 
           {/* Proceso - stacked on small */}
-          <div className="py-12 flex flex-col items-center" id="proceso">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={fadeIn}
+            className="py-12 flex flex-col items-center"
+            id="proceso"
+          >
             <AnimatedHeading
               firstText="Cómo es el"
               secondText="proceso de selección"
@@ -554,8 +592,8 @@ const Trabajar = () => {
               completamente en línea y se completa en una única sesión de pruebas.
             </p>
 
-            <div className="flex flex-col md:flex-row gap-8 mt-10 w-full px-2">
-              <div className="w-full md:w-1/2">
+            <div className="flex flex-col lg:flex-row gap-8 mt-10 w-full px-2">
+              <div className="w-full lg:w-1/2">
                 <Image
                   src="https://eucampus.com/wp-content/uploads/2020/07/course2.png"
                   alt=""
@@ -565,7 +603,7 @@ const Trabajar = () => {
                 />
               </div>
 
-              <div className="w-full md:w-1/2 flex flex-col gap-4">
+              <div className="w-full lg:w-1/2 flex flex-col gap-4">
                 {selectionProcess.map((step, idx) => (
                   <div
                     key={idx}
@@ -608,11 +646,18 @@ const Trabajar = () => {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Ofertas section - stacked on small */}
-        <div className="py-12 flex flex-col items-center" id="ofertas">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={fadeIn}
+          className="py-12 flex flex-col items-center"
+          id="ofertas"
+        >
           <AnimatedHeading
             firstText="¿Dónde buscar las"
             secondText="ofertas de empleo"
@@ -638,8 +683,8 @@ const Trabajar = () => {
             dependiendo del tipo de contrato o institución.
           </p>
 
-          <div className="flex flex-col md:flex-row md:justify-between gap-6 text-[#7A7A7A] text-sm mt-8 w-full px-4">
-            <div className="w-full md:w-1/2 flex flex-col gap-4">
+          <div className="flex flex-col lg:flex-row lg:justify-between gap-6 text-[#7A7A7A] text-sm mt-8 w-full px-4">
+            <div className="w-full lg:w-1/2 flex flex-col gap-4">
               <h3 className="text-primary text-xl font-medium">
                 EPSO – Oficina Europea de Selección de Personal
               </h3>
@@ -695,7 +740,7 @@ const Trabajar = () => {
               </div>
             </div>
 
-            <div className="w-full md:w-1/2 flex-shrink-0">
+            <div className="w-full lg:w-1/2 flex-shrink-0">
               <Image
                 src="https://eucampus.com/wp-content/uploads/2025/09/mujer-sonriente-junto-una-ventana-1025x1536.jpg"
                 alt=""
@@ -705,7 +750,7 @@ const Trabajar = () => {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )

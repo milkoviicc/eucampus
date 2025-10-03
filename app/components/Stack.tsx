@@ -1,4 +1,6 @@
+'use client'
 import React, { useState, useMemo } from 'react'
+import { motion } from 'framer-motion'
 
 const Stack = () => {
   const tips = useMemo(
@@ -51,8 +53,12 @@ const Stack = () => {
   return (
     <div className="flex flex-col gap-[20px] mt-10 px-6">
       {tips.map((tip, idx) => (
-        <div
+        <motion.div
           key={idx}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
           className="bg-white rounded-2xl shadow-xl overflow-hidden relative cursor-pointer"
           onClick={() => toggleTip(idx)}
         >
@@ -88,7 +94,7 @@ const Stack = () => {
               <div className="pb-2">{tip.longDesc}</div>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   )

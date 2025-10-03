@@ -16,7 +16,7 @@ const Footer = () => {
             <h5 className="text-lg font-semibold py-2">Cursos</h5>
             <ul className="flex flex-col gap-2">
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/cursos-generalistas-ad5" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Generalistas
                 </a>
@@ -28,7 +28,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/secretaries" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Secreatries
                 </a>
@@ -41,19 +41,25 @@ const Footer = () => {
             <h5 className="text-lg font-semibold py-2">Entrenamiento</h5>
             <ul className="flex flex-col gap-2">
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/entrenamientos-razonamiento" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Razonamiento
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a
+                  href="/entrenamientos-conocimientos-ue"
+                  className="text-sm flex gap-2 items-center"
+                >
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Conoc. UE
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a
+                  href="/entrenamientos-competencias-digitales"
+                  className="text-sm flex gap-2 items-center"
+                >
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Compet. dig.
                 </a>
@@ -66,7 +72,7 @@ const Footer = () => {
             <h5 className="text-lg font-semibold pt-6 pb-2 lg:pt-2">Próximos cursos</h5>
             <ul className="flex flex-col gap-2">
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/asistentes-ast3" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Asistentes
                 </a>
@@ -85,37 +91,37 @@ const Footer = () => {
             <h5 className="text-lg font-semibold py-2 lg:pt-0">Trabajar en la UE</h5>
             <ul className="flex flex-col gap-2">
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/trabajar-en-la-ue#porque" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Acceso a la UE
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/trabajar-en-la-ue#tipos" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Tipos de empleo
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/trabajar-en-la-ue#requisitos" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Requisitos generales
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/trabajar-en-la-ue#proceso" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Proceso de selección
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/trabajar-en-la-ue#ofertas" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Dónde buscar ofertas
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/trabajar-en-la-ue#practicos" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Consejos prácticos
                 </a>
@@ -128,30 +134,30 @@ const Footer = () => {
             <h5 className="text-lg font-semibold py-2">Sobre nosotros</h5>
             <ul className="flex flex-col gap-2">
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/sobre-nosotros#quienes" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Quiénes somos
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/sobre-nosotros#quehacemos" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Qué hacemos
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/sobre-nosotros#elegirnos" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Por qué elegirnos
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/sobre-nosotros#ayudamos" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />A quién ayudamos
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex gap-2 items-center">
+                <a href="/sobre-nosotros#comohacemos" className="text-sm flex gap-2 items-center">
                   <FontAwesomeIcon icon={faChevronRight} fontSize="14" />
                   Cómo lo hacemos
                 </a>
@@ -169,7 +175,7 @@ const Footer = () => {
         <div className="mt-16 lg:mt-0 flex flex-col items-center">
           <div className="w-[160px]">
             <Image
-              src="https://eucampus.com/wp-content/uploads/2025/05/logo-web-hor.png"
+              src="https://eucampus.com/wp-content/uploads/2025/05/logo-web-pie.png"
               width={500}
               height={500}
               alt="EU Campus logo"

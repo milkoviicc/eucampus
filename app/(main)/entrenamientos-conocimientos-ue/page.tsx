@@ -1,8 +1,28 @@
+'use client'
 import Breadcrumb from '@/app/components/Breadcrumb'
 import Generalistas from '@/app/components/Generalistas'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { motion, Variants } from 'framer-motion'
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+const container: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+}
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 12, scale: 0.98 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
+}
 
 const ConocimientosUE = () => {
   const entrenamientos = [
@@ -35,10 +55,19 @@ const ConocimientosUE = () => {
     <div className="mt-[60px]">
       <Breadcrumb />
       <div className="px-4 xl:px-0 w-full lg:max-w-[1300px] 2xl:max-w-[1600px] mx-auto pt-10 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pb-20 lg:pb-0">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.15 }}
+          variants={container}
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pb-20 lg:pb-0"
+        >
           {entrenamientos.slice(0, 4).map((entrenamiento, idx) => (
-            <div
+            <motion.div
               key={idx}
+              variants={item}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 20 }}
               className="pl-4 py-[15px] bg-[#222] h-[280px] text-[#fff] shadow-[-6px_7px_1px_5px_#00A694] rounded-[10px] hover:shadow-[6px_7px_1px_5px_#00A694] transition-all duration-500"
             >
               <a
@@ -58,10 +87,18 @@ const ConocimientosUE = () => {
               <p className="pb-3 pl-2 text-sm pr-4 lg:px-1">
                 {entrenamiento.entrenamientoDescription}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
-        <Generalistas />
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+          className="mt-8"
+        >
+          <Generalistas />
+        </motion.div>
       </div>
     </div>
   )

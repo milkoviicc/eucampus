@@ -5,7 +5,7 @@ import React from 'react'
 
 const Generalistas = () => {
   return (
-    <div className="lg:pt-20">
+    <div className="lg:pt-10">
       <div className="text-center font-semibold">
         <h3 className="text-lg md:text-2xl">Preparación completa con método</h3>
         <h1 className="text-2xl mt-2 md:text-3xl md:mt-0">Explora nuestro Pack Generalistas AD5</h1>

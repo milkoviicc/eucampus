@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { ShoppingCart } from 'lucide-react'
 import { Menu, X } from 'lucide-react'
@@ -27,6 +27,35 @@ const Navbar = () => {
     dispatch(logoutThunk())
   }
 
+  // Close menu on scroll/touch and lock background scroll while open
+  useEffect(() => {
+    const handleCloseOnScroll = () => {
+      setIsOpen(false)
+    }
+
+    if (isOpen) {
+      // Close the menu if the user scrolls or performs a touchmove
+      window.addEventListener('scroll', handleCloseOnScroll, { passive: true })
+      window.addEventListener('touchmove', handleCloseOnScroll, { passive: true })
+
+      // Prevent background scrolling while menu is open
+      const previousOverflow = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+
+      return () => {
+        window.removeEventListener('scroll', handleCloseOnScroll)
+        window.removeEventListener('touchmove', handleCloseOnScroll)
+        document.body.style.overflow = previousOverflow || ''
+      }
+    }
+
+    // If menu is not open, ensure overflow is reset (in case)
+    document.body.style.overflow = ''
+    return () => {
+      // cleanup in case component unmounts while closed
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
   return (
     <>
       <div className="fixed top-0 left-0 right-0 h-[60px] bg-white z-50 shadow-[0_1px_0_0_rgba(0,0,0,0.1)]">

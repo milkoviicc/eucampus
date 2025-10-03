@@ -8,6 +8,7 @@ import React, {
   SVGProps,
   ReactElement,
   RefObject,
+  isValidElement,
 } from 'react'
 
 type AnimatedHeadingProps = {
@@ -49,12 +50,10 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
 
   // Clone the passed SVG so we can inject ref + svg-animated class
   const svgWithRef =
-    svg &&
-    cloneElement(svg as ReactElement<SVGProps<SVGSVGElement>>, {
+    isValidElement<SVGProps<SVGSVGElement>>(svg) &&
+    cloneElement(svg, {
       ref: svgRef as RefObject<SVGSVGElement>,
-      className: `${
-        (svg as ReactElement<SVGProps<SVGSVGElement>>).props.className || ''
-      } svg-animated`,
+      className: `${svg.props.className ?? ''} svg-animated`,
     })
 
   return (

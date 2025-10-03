@@ -1,14 +1,31 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
 import Breadcrumb from '@/app/components/Breadcrumb'
 import AnimatedHeading from '@/app/components/AnimatedHeading'
+import { motion, Variants } from 'framer-motion'
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+}
 
 const SobreNosotros = () => {
   return (
     <div className="mt-[60px]">
       <Breadcrumb />
       <div className="max-w-[1300px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-5 py-20">
-        <div className="flex gap-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+          className="flex gap-10"
+          id="quienes"
+        >
           <div className="flex flex-col justify-center gap-2 w-1/2">
             <AnimatedHeading
               firstText="Quiénes"
@@ -46,16 +63,23 @@ const SobreNosotros = () => {
             </div>
           </div>
           <Image
-            src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/quienes-1.jpg"
+            src="https://eucampus.com/wp-content/uploads/2025/05/quienes-1.jpg"
             width={240}
             height={600}
             alt="Europea"
             className="w-[550px] h-auto rounded-[10px]"
           />
-        </div>
-        <div className="flex gap-10 py-20">
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+          className="flex gap-10 py-20"
+          id="quehacemos"
+        >
           <Image
-            src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/quienes-2.jpg"
+            src="https://eucampus.com/wp-content/uploads/2025/05/quienes-2.jpg"
             width={240}
             height={600}
             alt="Europea"
@@ -70,7 +94,7 @@ const SobreNosotros = () => {
               svg={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute left-0 top-0 w-full svg-animated"
+                  className="absolute left-0 -bottom-5 w-full svg-animated"
                   viewBox="0 0 500 150"
                   stroke="#00A694"
                   strokeWidth={9}
@@ -84,17 +108,22 @@ const SobreNosotros = () => {
             />
             <div className="flex flex-col gap-2 text-sm text-[#7A7A7A]">
               <p>
-                Ayudamos a personas a prepararse para conseguir empleo en la Unión Europea, ya sea
-                mediante oposiciones, contratos temporales o procesos de selección abiertos.
+                A estudiantes, opositores, jóvenes profesionales o personas que quieren dar un giro
+                a su carrera y trabajar en la UE.
               </p>
-              <p>
-                Ofrecemos formación online clara, actualizada y en español, para que no pierdas
-                tiempo y te centres en lo que realmente importa.
-              </p>
+              <p>Gente que busca estabilidad o proyección internacional, y valora su tiempo.</p>
+              <p>Personas digitales, exigentes y con ganas de avanzar.</p>
             </div>
           </div>
-        </div>
-        <div className="flex gap-10 py-20">
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+          className="flex gap-10 py-20"
+          id="elegirnos"
+        >
           <div className="flex flex-col justify-center gap-2 w-1/2">
             <AnimatedHeading
               firstText="Porqué"
@@ -130,16 +159,23 @@ const SobreNosotros = () => {
             </div>
           </div>
           <Image
-            src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/quienes-3.jpg"
+            src="https://eucampus.com/wp-content/uploads/2025/05/quienes-3.jpg"
             width={240}
             height={600}
             alt="Countries"
             className="w-[550px] h-auto rounded-[10px]"
           />
-        </div>
-        <div className="flex gap-10 py-20">
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+          className="flex gap-10 py-20"
+          id="ayudamos"
+        >
           <Image
-            src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/quienes-4.jpg"
+            src="https://eucampus.com/wp-content/uploads/2025/05/quienes-4.jpg"
             width={240}
             height={600}
             alt="Friends"
@@ -175,8 +211,15 @@ const SobreNosotros = () => {
               <p>Personas digitales, exigentes y con ganas de avanzar.</p>
             </div>
           </div>
-        </div>
-        <div className="flex gap-10 py-20">
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+          className="flex gap-10 py-20"
+          id="comohacemos"
+        >
           <div className="flex flex-col justify-center gap-2 w-1/2">
             <AnimatedHeading
               firstText="Cómo lo"
@@ -213,13 +256,13 @@ const SobreNosotros = () => {
             </div>
           </div>
           <Image
-            src="https://marianos98.sg-host.com/wp-content/uploads/2025/05/quienes-5.jpg"
+            src="https://eucampus.com/wp-content/uploads/2025/05/quienes-5.jpg"
             width={240}
             height={600}
             alt="Studying"
             className="w-[550px] h-auto rounded-[10px]"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   )

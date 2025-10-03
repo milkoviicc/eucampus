@@ -15,8 +15,7 @@ const Breadcrumb = () => {
     <div
       className="w-full h-[150px] bg-bottom bg-no-repeat"
       style={{
-        backgroundImage:
-          'url(https://marianos98.sg-host.com/wp-content/uploads/2025/05/bg-title-int.jpg)',
+        backgroundImage: 'url(https://eucampus.com/wp-content/uploads/2025/05/bg-title-int.jpg)',
         backgroundSize: 'cover',
       }}
     >
