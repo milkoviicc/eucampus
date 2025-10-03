@@ -42,14 +42,14 @@ export const loginThunk = createAsyncThunk<
 
   const { email, password } = credentials
 
-  if (email !== 'marko.milkovicc@gmail.com' || password !== 'string123') {
+  if (email !== 'eucampusadmin@gmail.com' || password !== 'eucampusadmin123') {
     return rejectWithValue('Credenciales no válidas')
   }
 
   const user: User = {
     id: Math.random().toString(36).slice(2, 9),
     email,
-    fullName: 'Marko Milkovic',
+    fullName: 'EUCampus Admin',
   }
 
   const auth: AuthCookie = {
@@ -100,7 +100,6 @@ export const registerThunk = createAsyncThunk<
 
 export const logoutThunk = createAsyncThunk('auth/logout', async () => {
   removeCookie('auth')
-  console.log('here')
   return true
 })
 

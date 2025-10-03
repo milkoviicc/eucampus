@@ -15,6 +15,7 @@ import { logoutThunk, User } from '@/app/redux/features/authSlice'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/app/redux/store'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { userAgent } from 'next/server'
 
 type Course = {
   id: string
@@ -295,7 +296,7 @@ export default function LMSPage() {
             <ProfileMain courses={courses} profileTab={profileTab} user={user} />
           ) : null}
 
-          {activeLeft === 'settings' && <SettingsMain />}
+          {activeLeft === 'settings' && user && <SettingsMain user={user} />}
         </main>
       </div>
     </div>
@@ -440,7 +441,7 @@ function ProfileMain({
         <div className="bg-primary text-white rounded-md p-6 mb-8 flex items-center gap-6">
           {/* <img src="/avatar-placeholder.png" alt="avatar" className="w-16 h-16 rounded-full" /> */}
           <div>
-            <h2 className="text-3xl font-semibold">Marko Milkovic</h2>
+            <h2 className="text-3xl font-semibold">{user.fullName}</h2>
             <div className="mt-4">
               Inscrito en:
               <span className="text-teal-600 font-semibold"> {registered}</span> Curso/s.
@@ -504,7 +505,7 @@ function ProfileMain({
   }
 }
 
-function SettingsMain() {
+function SettingsMain({ user }: { user: User }) {
   const latest = Array.from({ length: 4 }).map((_, i) => ({
     id: i + 1,
     title: 'Chrome Join Windows 10',
@@ -529,10 +530,7 @@ function SettingsMain() {
           </div>
 
           <label className="text-sm text-slate-500">Correo electrónico de la cuenta</label>
-          <input
-            className="w-full border-b py-2 outline-none mb-6"
-            defaultValue="marko.milkovicc@gmail.com"
-          />
+          <input className="w-full border-b py-2 outline-none mb-6" defaultValue={user.email} />
 
           <button className="w-full px-6 py-2 bg-primary text-white rounded shadow">
             Guardar cambios
